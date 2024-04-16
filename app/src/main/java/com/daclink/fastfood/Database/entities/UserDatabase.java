@@ -43,4 +43,6 @@ public abstract class UserDatabase extends RoomDatabase {
             //todo add database
         }
     };
+
+    public abstract UserDAO userDAO();
 }
