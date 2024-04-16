@@ -24,4 +24,19 @@ public class User {
     public void setId(int id) {
         this.id = id;
     }
+
+    public void setAdmin(boolean admin) {
+        if(admin) {
+            type = "admin";
+        } else {
+            type = "user";
+        }
+    }
+
+    public boolean isAdmin() {
+        if(type.equals("admin")) {
+            return true;
+        }
+        return false;
+    }
 }

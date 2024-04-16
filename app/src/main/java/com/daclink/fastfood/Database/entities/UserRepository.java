@@ -19,11 +19,13 @@ public class UserRepository {
         return allUsers;
     }
 
-    public void addUser(User user) {
+    public void addUser(User... user) {
         UserDatabase.databaseWriterExecutor.execute(()->
                 {
                     userDAO.insert(user);
                 }
         );
     }
+
+
 }

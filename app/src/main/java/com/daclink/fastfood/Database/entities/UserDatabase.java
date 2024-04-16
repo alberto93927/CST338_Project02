@@ -4,6 +4,7 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
+import androidx.room.Insert;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
@@ -40,7 +41,14 @@ public abstract class UserDatabase extends RoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-            //todo add database
+            databaseWriterExecutor.execute(()-> {
+                UserDAO dao = INSTANCE.userDAO();
+                dao.deleteAll();
+                User admin = new User("admin1", "admin1", "admin");
+                User testUser1 = new User("testUser1", "testUser1", "user");
+                dao.insert(admin);
+                dao.insert(testUser1);
+            });
         }
     };
 
