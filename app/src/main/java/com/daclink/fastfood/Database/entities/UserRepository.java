@@ -2,12 +2,15 @@ package com.daclink.fastfood.Database.entities;
 
 import android.app.Application;
 
+import androidx.lifecycle.LiveData;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserRepository {
 
     private UserDAO userDAO;
-    private ArrayList<User> allUsers;
+    private LiveData<List<User>> allUsers;
 
     public UserRepository(Application application) {
         UserDatabase db = UserDatabase.getDatabase(application);
@@ -15,7 +18,7 @@ public class UserRepository {
         this.allUsers = this.userDAO.getAllUsers();
     }
 
-    public ArrayList<User> getAllUsers() {
+    public LiveData<List<User>> getAllUsers() {
         return allUsers;
     }
 

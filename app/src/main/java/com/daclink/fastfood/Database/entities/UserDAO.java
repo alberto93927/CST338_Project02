@@ -1,5 +1,6 @@
 package com.daclink.fastfood.Database.entities;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -18,14 +19,14 @@ public interface UserDAO {
     void delete(User user);
 
     @Query("Select * from " + UserDatabase.userTable + " ORDER BY name")
-    ArrayList<User> getAllUsers();
+    LiveData<List<User>> getAllUsers();
 
     @Query("DELETE from " + UserDatabase.userTable)
     void deleteAll();
 
     @Query("Select * from " + UserDatabase.userTable + " WHERE name  LIKE :search")
-    public ArrayList<User> findUserByName(String search);
+    public LiveData<List<User>> findUserByName(String search);
 
     @Query("Select * from " + UserDatabase.userTable + " WHERE id LIKE :search")
-    public ArrayList<User> findUserByID(String search);
+    public LiveData<List<User>> findUserByID(String search);
 }
