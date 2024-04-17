@@ -1,5 +1,6 @@
 package com.daclink.fastfood;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,15 +9,18 @@ import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 
+import com.daclink.fastfood.Database.entities.User;
+import com.daclink.fastfood.Database.entities.UserRepository;
 import com.daclink.fastfood.databinding.ActivityLoginBinding;
+
+import java.util.List;
 
 
 public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
-    //String Username;
-    String Password;
 
     //Not being used yet. Will be implemented soon.
     //SharedPreferences settings = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
@@ -29,6 +33,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        UserRepository userRepository = new UserRepository(getApplication());
+        LoginViewModel loginViewModel = new LoginViewModel(userRepository);
 
 
 
@@ -36,13 +42,28 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String Username = binding.UsernameEditText.getText().toString();
-                Password = binding.PasswordEditText.getText().toString();
+                String username = binding.UsernameEditText.getText().toString();
+                loginViewModel.setUserName(username);
+                String Password = binding.PasswordEditText.getText().toString();
                 Intent intent = new Intent(LoginActivity.this, LandingPage.class);
-                intent.putExtra("USERNAME_KEY", Username);
-                Log.d("User", "Username:" + Username);
-                //intent.putExtra("PASSWORD_KEY", Password);
+                intent.putExtra("USERNAME_KEY", username);
+                Log.d("User", "Username:" + username);
                 startActivity(intent);
+            }
+        });
+
+        loginViewModel.getUserByNameLiveData().observe(this, new Observer<List<User>>() {
+            @Override
+            public void onChanged(List<User> users) {
+                // Handle the list of users here
+                if (users != null && !users.isEmpty()) {
+                    User user = users.get(0);
+                    // Do something with the user data
+                    Log.d("UserData", "User ID: " + user.getId() + ", Name: " + user.getName());
+                } else {
+                    // User not found or list empty
+                    Log.d("UserData", "User not found");
+                }
             }
         });
 
