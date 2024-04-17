@@ -1,6 +1,9 @@
 package com.daclink.fastfood;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,10 +18,15 @@ public class LandingPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_landing_page);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+        Intent intent = getIntent();
+
+        String username = intent.getStringExtra("USERNAME_KEY");
+        Log.d("USERNAME", "User " + username);
+        //String password = intent.getStringExtra("PASSWORD_KEY");
+
+        TextView usernameTextView = findViewById(R.id.usernameTextView);
+        usernameTextView.setText(username);
+
     }
 }

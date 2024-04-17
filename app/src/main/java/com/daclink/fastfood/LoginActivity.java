@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,8 +19,8 @@ public class LoginActivity extends AppCompatActivity {
     String Password = "";
 
     //Not being used yet. Will be implemented soon.
-    SharedPreferences settings = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
-    SharedPreferences.Editor editor = settings.edit();
+    //SharedPreferences settings = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+    //SharedPreferences.Editor editor = settings.edit();
 
     
 
@@ -36,6 +37,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, LandingPage.class);
+                intent.putExtra("USERNAME_KEY", Username);
+                Log.d("User", "Username:" + Username);
+                //intent.putExtra("PASSWORD_KEY", Password);
                 startActivity(intent);
             }
         });
