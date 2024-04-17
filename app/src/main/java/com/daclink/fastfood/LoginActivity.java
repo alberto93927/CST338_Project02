@@ -1,24 +1,49 @@
 package com.daclink.fastfood;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import com.daclink.fastfood.databinding.ActivityLoginBinding;
+
 
 public class LoginActivity extends AppCompatActivity {
+
+    private ActivityLoginBinding binding;
+    String Username = "";
+    String Password = "";
+
+    //Not being used yet. Will be implemented soon.
+    SharedPreferences settings = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+    SharedPreferences.Editor editor = settings.edit();
+
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_login);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        Username = binding.UsernameEditText.getText().toString();
+        Password = binding.PasswordEditText.getText().toString();
+
+        binding.LoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, LandingPage.class);
+                startActivity(intent);
+            }
         });
+
+    }
+
+
+    static Intent loginIntentFactory(Context context){
+        return new Intent(context, LoginActivity.class);
     }
 }
