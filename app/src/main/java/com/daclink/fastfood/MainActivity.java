@@ -11,6 +11,10 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
 
+    public static final String TAG = "USERLOG";
+
+    private static final String LOGGED_IN_KEY = "is"
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -13,7 +13,7 @@
         android:layout_height="200dp"
         android:layout_marginTop="72dp"
         android:gravity="center"
-        android:text="Welcome!\nPlease enter your name and password:"
+        android:text="@string/welcome_nplease_enter_your_name_and_password"
 
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,23 +25,60 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Username:"
-        android:textSize="36sp"
+        android:padding="8dp"
+        android:text="@string/username"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/WelcomeLabelTextView"
 
         />
 
-    <TextView
+    <EditText
+        android:id="@+id/UsernameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Password:"
-        android:textSize="36sp"
+        android:hint="@string/enter_your_username"
+        android:padding="8dp"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@id/UsernameTextView"
+        app:layout_constraintTop_toBottomOf="@id/WelcomeLabelTextView" />
+
+    <TextView
+        android:id="@+id/PasswordTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:padding="8dp"
+        android:text="@string/password"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/UsernameTextView"
 
         />
 
+    <EditText
+        android:id="@+id/PasswordEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="@string/enter_your_password"
+        android:padding="8dp"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@id/PasswordTextView"
+        app:layout_constraintTop_toBottomOf="@id/UsernameTextView" />
+
+    <Button
+        android:id="@+id/LoginButton"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="48dp"
+        android:text="@string/login"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/PasswordEditText"
+        tools:layout_editor_absoluteX="130dp"
+        tools:layout_editor_absoluteY="223dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

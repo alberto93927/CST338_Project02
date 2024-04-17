@@ -3,4 +3,9 @@
     <string name="login">Login</string>
     <string name="create_account">Create Account</string>
     <string name="fast_food_nget_your_groceries">Fast Food!\nGet Your Groceries!</string>
+    <string name="welcome_nplease_enter_your_name_and_password">Welcome!\nPlease enter your name and password:</string>
+    <string name="username">Username:</string>
+    <string name="enter_your_username">Enter your username</string>
+    <string name="password">Password:</string>
+    <string name="enter_your_password">Enter your password</string>
 </resources>
