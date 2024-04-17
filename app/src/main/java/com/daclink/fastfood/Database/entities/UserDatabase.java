@@ -42,12 +42,17 @@ public abstract class UserDatabase extends RoomDatabase {
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
             databaseWriterExecutor.execute(()-> {
-                UserDAO dao = INSTANCE.userDAO();
-                dao.deleteAll();
-                User admin = new User("admin1", "admin1", "admin");
-                User testUser1 = new User("testUser1", "testUser1", "user");
-                dao.insert(admin);
-                dao.insert(testUser1);
+                //User admin = new User("admin2", "admin2", "admin");
+                //User testUser1 = new User("testUser1", "testUser1", "user");
+                //dao.insert(admin);
+                //dao.insert(testUser1);
+                Executors.newSingleThreadExecutor().execute(() -> {
+
+                    UserDAO dao = INSTANCE.userDAO();
+                    dao.deleteAll();
+                    dao.insert(new User("admin2", "admin2", "admin"));
+                    dao.insert(new User("testUser1", "testUser1", "user"));
+                });
             });
         }
     };
