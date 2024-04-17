@@ -15,8 +15,8 @@ import com.daclink.fastfood.databinding.ActivityLoginBinding;
 public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
-    String Username = "";
-    String Password = "";
+    //String Username;
+    String Password;
 
     //Not being used yet. Will be implemented soon.
     //SharedPreferences settings = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
@@ -30,12 +30,14 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        Username = binding.UsernameEditText.getText().toString();
-        Password = binding.PasswordEditText.getText().toString();
+
 
         binding.LoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                String Username = binding.UsernameEditText.getText().toString();
+                Password = binding.PasswordEditText.getText().toString();
                 Intent intent = new Intent(LoginActivity.this, LandingPage.class);
                 intent.putExtra("USERNAME_KEY", Username);
                 Log.d("User", "Username:" + Username);
