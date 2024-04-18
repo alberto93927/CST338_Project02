@@ -30,5 +30,11 @@ public class UserRepository {
         );
     }
 
+    public LiveData<List<User>> findUserByID(String userId) {
+        return userDAO.findUserByID(userId);
+    }
 
+    public LiveData<List<User>> findUserByName(String name) {
+        return userDAO.findUserByName(name);
+    }
 }
