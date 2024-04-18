@@ -32,6 +32,9 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
+        //if(){
+
+        //}
         binding.LoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

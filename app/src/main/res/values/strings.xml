@@ -8,4 +8,9 @@
     <string name="enter_your_username">Enter your username</string>
     <string name="password">Password:</string>
     <string name="enter_your_password">Enter your password</string>
+    <string name="shop">Shop</string>
+    <string name="admin">Admin</string>
+    <string name="logout">Logout</string>
+    <string name="settings">Settings</string>
+    <string name="view_cart_history">View Cart History</string>
 </resources>

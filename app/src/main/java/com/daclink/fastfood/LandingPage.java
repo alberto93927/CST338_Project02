@@ -3,6 +3,7 @@ package com.daclink.fastfood;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -11,7 +12,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.daclink.fastfood.databinding.ActivityLandingPageBinding;
+
 public class LandingPage extends AppCompatActivity {
+
+    private ActivityLandingPageBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +32,20 @@ public class LandingPage extends AppCompatActivity {
 
         TextView usernameTextView = findViewById(R.id.usernameTextView);
         usernameTextView.setText(username);
+
+        binding.LogoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(LandingPage.this, MainActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+
+
+
 
     }
 }
