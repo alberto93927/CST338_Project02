@@ -16,7 +16,6 @@ import java.util.concurrent.Executors;
 public abstract class UserDatabase extends RoomDatabase {
     private static final String DATABASE_NAME = "FastFood_Database";
     public static final String userTable = "userTable";
-
     private static volatile UserDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
 
@@ -47,7 +46,6 @@ public abstract class UserDatabase extends RoomDatabase {
                 //dao.insert(admin);
                 //dao.insert(testUser1);
                 Executors.newSingleThreadExecutor().execute(() -> {
-
                     UserDAO dao = INSTANCE.userDAO();
                     dao.deleteAll();
                     dao.insert(new User("admin2", "admin2", "admin"));
