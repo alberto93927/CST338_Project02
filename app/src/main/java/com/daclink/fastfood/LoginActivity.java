@@ -59,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                     editor.apply();
                     Log.d("UserData", "User ID: " + user.getId() + ", Name: " + user.getName());
                     startActivity(intent);
+                    finish();
                 } else {
                     // User not found or list empty
                     Log.d("UserData", "User not found");
