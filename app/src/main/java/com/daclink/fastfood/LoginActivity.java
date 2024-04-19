@@ -1,7 +1,5 @@
 package com.daclink.fastfood;
 
-import static android.app.PendingIntent.getActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -38,7 +36,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String username = binding.UsernameEditText.getText().toString();
+                Log.d("Username", "User: " + username);
                 loginViewModel.setUserName(username);
+
             }
         });
 
@@ -53,6 +53,7 @@ public class LoginActivity extends AppCompatActivity {
                     Intent intent = new Intent(LoginActivity.this, LandingPage.class);
                     intent.putExtra("USERNAME_KEY", user.getName());
                     editor.putString("username", user.getName());
+                    editor.putBoolean("LoggedInStatus", true);
                     editor.putInt("id", user.getId());
                     editor.putBoolean("admin", user.isAdmin());
                     editor.apply();
@@ -65,10 +66,5 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-
-    static Intent loginIntentFactory(Context context){
-        return new Intent(context, LoginActivity.class);
     }
 }

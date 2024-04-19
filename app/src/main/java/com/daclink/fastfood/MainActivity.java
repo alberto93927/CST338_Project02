@@ -8,21 +8,11 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.daclink.fastfood.Database.entities.UserRepository;
 import com.daclink.fastfood.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-    //Acting as a key to retrieve userID
-    private static final String MAIN_ACTIVITY_USER_ID = "com.daclink.fastfood.MAIN_ACTIVITY_USER_ID";
     ActivityMainBinding binding;
-    private UserRepository repository;
-
-    public static final String TAG = "AL_USERLOG";
-
-    int loggedInUserId = -1;
-
-    private static final String LOGGED_IN_KEY = "is";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,23 +20,14 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        SharedPreferences settings = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("fast_food_user_info", Context.MODE_PRIVATE);
 
-        boolean isUserLoggedIn = settings.getBoolean("isTheUserLoggedIn", false);
-
-        if(isUserLoggedIn == true){
+        if(sharedPreferences.getBoolean("LoggedInStatus", false)){
             Intent intent = new Intent(MainActivity.this, LandingPage.class);
             startActivity(intent);
+            finish();
         }
         else{
-
-            /*
-            loginUser();
-            if(loggedInUserId == -1){
-                Intent intent = LoginActivity.loginIntentFactory(getApplicationContext());
-                startActivity(intent);
-            }
-            */
 
             binding = ActivityMainBinding.inflate(getLayoutInflater());
             setContentView(binding.getRoot());
@@ -70,19 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void loginOptions(){
-
-    }
-
-    static Intent mainActivityIntentFactory(Context context, int userId){
-        Intent intent = new Intent(context, MainActivity.class);
-        intent.putExtra(MAIN_ACTIVITY_USER_ID, userId);
-        return intent;
-    }
-
-    private void loginUser(){
-        loggedInUserId = getIntent().getIntExtra(MAIN_ACTIVITY_USER_ID, -1);
-    }
 
     private void createUser(){
 
