@@ -50,8 +50,8 @@ public class LoginActivity extends AppCompatActivity {
                     User user = users.get(0);
                     String Password = binding.PasswordEditText.getText().toString();
                     //Need to implement password checking
-                    Intent intent = new Intent(LoginActivity.this, LandingPage.class);
-                    intent.putExtra("USERNAME_KEY", user.getName());
+                    String username = user.getName();
+                    Intent intent = IntentFactory.newLandingPageIntent(LoginActivity.this, username);
                     editor.putString("username", user.getName());
                     editor.putBoolean("LoggedInStatus", true);
                     editor.putInt("id", user.getId());

@@ -38,7 +38,7 @@ public class LandingPage extends AppCompatActivity {
                 editor.clear();
                 editor.apply();
 
-                Intent intent = new Intent(LandingPage.this, MainActivity.class);
+                Intent intent = IntentFactory.newMainActivityIntent(LandingPage.this);
                 startActivity(intent);
                 finish();
             }

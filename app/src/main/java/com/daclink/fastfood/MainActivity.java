@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("fast_food_user_info", Context.MODE_PRIVATE);
 
         if(sharedPreferences.getBoolean("LoggedInStatus", false)){
-            Intent intent = new Intent(MainActivity.this, LandingPage.class);
+            Intent intent = IntentFactory.newLandingPageIntent(MainActivity.this);
             startActivity(intent);
             finish();
         }
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             binding.LoginButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    Intent intent = IntentFactory.newLoginActivityIntent(MainActivity.this);
                     startActivity(intent);
                     finish();
                 }
@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
 
 
     private void createUser(){
