@@ -6,16 +6,15 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
-public class FoodRepository {
+public class UserRepository {
 
     private userDAO userDAO;
-    private productDAO productDAO;
+
     private LiveData<List<User>> allUsers;
 
-    public FoodRepository(Application application) {
+    public UserRepository(Application application) {
         FoodDatabase db = FoodDatabase.getDatabase(application);
         this.userDAO = db.foodDAO();
-        this.productDAO = db.productDAO();
         this.allUsers = this.userDAO.getAllUsers();
     }
 
@@ -37,9 +36,5 @@ public class FoodRepository {
 
     public LiveData<List<User>> findUserByName(String name) {
         return userDAO.findUserByName(name);
-    }
-
-    public LiveData<List<Product>> searchProductByName(String name) {
-        return productDAO.searchProductByName(name);
     }
 }

@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
 import com.daclink.fastfood.Database.entities.User;
-import com.daclink.fastfood.Database.entities.FoodRepository;
+import com.daclink.fastfood.Database.entities.UserRepository;
 import com.daclink.fastfood.databinding.ActivityLoginBinding;
 
 import java.util.List;
@@ -28,8 +28,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        FoodRepository foodRepository = new FoodRepository(getApplication());
-        LoginViewModel loginViewModel = new LoginViewModel(foodRepository);
+        UserRepository userRepository = new UserRepository(getApplication());
+        LoginViewModel loginViewModel = new LoginViewModel(userRepository);
         sharedPreferences = getSharedPreferences("fast_food_user_info", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         binding.LoginButton.setOnClickListener(new View.OnClickListener() {
