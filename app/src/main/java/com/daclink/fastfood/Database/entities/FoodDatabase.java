@@ -11,7 +11,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {User.class}, version = 1, exportSchema = false)
+@Database(entities = {User.class, Product.class}, version = 1, exportSchema = false)
 public abstract class FoodDatabase extends RoomDatabase {
     private static final String DATABASE_NAME = "FastFood_Database";
     public static final String userTable = "userTable";
@@ -46,14 +46,17 @@ public abstract class FoodDatabase extends RoomDatabase {
                 //dao.insert(admin);
                 //dao.insert(testUser1);
                 Executors.newSingleThreadExecutor().execute(() -> {
-                    FoodDAO dao = INSTANCE.foodDAO();
-                    dao.deleteAll();
-                    dao.insert(new User("admin2", "admin2", "admin"));
-                    dao.insert(new User("testUser1", "testUser1", "user"));
+                    userDAO userDAO = INSTANCE.foodDAO();
+                    productDAO productDAO = INSTANCE.productDAO();
+                    userDAO.deleteAll();
+                    userDAO.insertUser(new User("admin2", "admin2", "admin"));
+                    userDAO.insertUser(new User("testUser1", "testUser1", "user"));
                 });
             });
         }
     };
 
-    public abstract FoodDAO foodDAO();
+    public abstract userDAO foodDAO();
+
+    public abstract productDAO productDAO();
 }

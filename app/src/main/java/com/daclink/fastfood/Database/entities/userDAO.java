@@ -10,12 +10,12 @@ import androidx.room.Query;
 import java.util.List;
 
 @Dao
-public interface FoodDAO {
+public interface userDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(User... user);
+    void insertUser(User... user);
 
     @Delete
-    void delete(User user);
+    void deleteUser(User user);
 
     @Query("Select * from " + FoodDatabase.userTable + " ORDER BY name")
     LiveData<List<User>> getAllUsers();

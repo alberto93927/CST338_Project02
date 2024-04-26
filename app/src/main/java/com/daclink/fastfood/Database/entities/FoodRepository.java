@@ -8,13 +8,15 @@ import java.util.List;
 
 public class FoodRepository {
 
-    private FoodDAO foodDAO;
+    private userDAO userDAO;
+    private productDAO productDAO;
     private LiveData<List<User>> allUsers;
 
     public FoodRepository(Application application) {
         FoodDatabase db = FoodDatabase.getDatabase(application);
-        this.foodDAO = db.foodDAO();
-        this.allUsers = this.foodDAO.getAllUsers();
+        this.userDAO = db.foodDAO();
+        this.productDAO = db.productDAO();
+        this.allUsers = this.userDAO.getAllUsers();
     }
 
     public LiveData<List<User>> getAllUsers() {
@@ -24,16 +26,16 @@ public class FoodRepository {
     public void addUser(User... user) {
         FoodDatabase.databaseWriterExecutor.execute(()->
                 {
-                    foodDAO.insert(user);
+                    userDAO.insertUser(user);
                 }
         );
     }
 
     public LiveData<List<User>> findUserByID(String userId) {
-        return foodDAO.findUserByID(userId);
+        return userDAO.findUserByID(userId);
     }
 
     public LiveData<List<User>> findUserByName(String name) {
-        return foodDAO.findUserByName(name);
+        return userDAO.findUserByName(name);
     }
 }
