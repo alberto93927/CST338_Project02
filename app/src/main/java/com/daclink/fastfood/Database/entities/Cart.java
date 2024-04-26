@@ -31,4 +31,8 @@ public class Cart {
     public boolean hasProduct(int productID) {
         return productIDs.contains(productID);
     }
+
+    public List<Integer> getProductIDs() {
+        return productIDs;
+    }
 }
