@@ -7,26 +7,25 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Dao
-public interface UserDAO {
+public interface FoodDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(User... user);
 
     @Delete
     void delete(User user);
 
-    @Query("Select * from " + UserDatabase.userTable + " ORDER BY name")
+    @Query("Select * from " + FoodDatabase.userTable + " ORDER BY name")
     LiveData<List<User>> getAllUsers();
 
-    @Query("DELETE from " + UserDatabase.userTable)
+    @Query("DELETE from " + FoodDatabase.userTable)
     void deleteAll();
 
-    @Query("Select * from " + UserDatabase.userTable + " WHERE name  LIKE :search")
+    @Query("Select * from " + FoodDatabase.userTable + " WHERE name  LIKE :search")
     public LiveData<List<User>> findUserByName(String search);
 
-    @Query("Select * from " + UserDatabase.userTable + " WHERE id LIKE :search")
+    @Query("Select * from " + FoodDatabase.userTable + " WHERE id LIKE :search")
     public LiveData<List<User>> findUserByID(String search);
 }
