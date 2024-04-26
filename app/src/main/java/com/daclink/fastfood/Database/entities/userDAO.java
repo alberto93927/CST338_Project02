@@ -24,8 +24,8 @@ public interface userDAO {
     void deleteAll();
 
     @Query("Select * from " + FoodDatabase.userTable + " WHERE name  LIKE :search")
-    public LiveData<List<User>> findUserByName(String search);
+    LiveData<List<User>> findUserByName(String search);
 
     @Query("Select * from " + FoodDatabase.userTable + " WHERE id LIKE :search")
-    public LiveData<List<User>> findUserByID(String search);
+    LiveData<List<User>> findUserByID(String search);
 }

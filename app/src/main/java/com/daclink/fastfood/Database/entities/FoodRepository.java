@@ -38,4 +38,8 @@ public class FoodRepository {
     public LiveData<List<User>> findUserByName(String name) {
         return userDAO.findUserByName(name);
     }
+
+    public LiveData<List<Product>> searchProductByName(String name) {
+        return productDAO.searchProductByName(name);
+    }
 }

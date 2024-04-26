@@ -12,11 +12,17 @@ import java.util.List;
 @Dao
 public interface productDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertProdct(Product... products);
+    void insertProduct(Product... products);
 
     @Delete
     void deleteProduct(Product product);
 
-    @Query("Select * from " + FoodDatabase.productTable)
-    LiveData<List<User>> getAllProducts();
+    @Query("DELETE from " + FoodDatabase.productTable)
+    void deleteAll();
+
+    @Query("Select * from " + FoodDatabase.productTable + " ORDER BY id")
+    LiveData<List<Product>> getAllProducts();
+
+    @Query("Select * from " + FoodDatabase.productTable + " WHERE name LIKE :search")
+    LiveData<List<Product>> searchProductByName(String search);
 }
