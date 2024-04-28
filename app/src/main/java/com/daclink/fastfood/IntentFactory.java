@@ -23,4 +23,16 @@ public class IntentFactory {
         return intent;
     }
 
+    public static Intent newShoppingCartActivityIntent(Context context){
+        return new Intent(context, ShoppingCartActivity.class);
+    }
+
+    public static Intent newCheckoutPageActivityIntent(Context context){
+        return  new Intent(context, CheckoutActivity.class);
+    }
+
+    public static Intent newOrderConfirmationActivityIntent(Context context){
+        return new Intent(context, OrderConfirmationActivity.class);
+    }
+
 }

@@ -44,5 +44,14 @@ public class LandingPage extends AppCompatActivity {
             }
         });
 
+        binding.ShoppingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = IntentFactory.newShoppingCartActivityIntent(LandingPage.this);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 }
