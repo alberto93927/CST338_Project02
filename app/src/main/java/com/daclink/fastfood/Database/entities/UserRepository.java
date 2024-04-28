@@ -4,17 +4,17 @@ import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserRepository {
 
-    private UserDAO userDAO;
+    private userDAO userDAO;
+
     private LiveData<List<User>> allUsers;
 
     public UserRepository(Application application) {
-        UserDatabase db = UserDatabase.getDatabase(application);
-        this.userDAO = db.userDAO();
+        FoodDatabase db = FoodDatabase.getDatabase(application);
+        this.userDAO = db.foodDAO();
         this.allUsers = this.userDAO.getAllUsers();
     }
 
@@ -23,9 +23,9 @@ public class UserRepository {
     }
 
     public void addUser(User... user) {
-        UserDatabase.databaseWriterExecutor.execute(()->
+        FoodDatabase.databaseWriterExecutor.execute(()->
                 {
-                    userDAO.insert(user);
+                    userDAO.insertUser(user);
                 }
         );
     }

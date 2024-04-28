@@ -2,11 +2,15 @@ package com.daclink.fastfood.Database.entities;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
-@Entity(tableName = UserDatabase.userTable)
+@Entity(tableName = FoodDatabase.userTable)
 public class User {
     @PrimaryKey(autoGenerate = true)
     private int id;
+
+    @TypeConverters({Converters.class})
+    private Cart cart;
     private String name;
     private String password;
     private String type;
@@ -32,6 +36,14 @@ public class User {
         } else {
             type = "user";
         }
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 
     public String getName() {

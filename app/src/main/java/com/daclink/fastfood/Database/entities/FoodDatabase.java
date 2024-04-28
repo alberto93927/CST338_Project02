@@ -4,7 +4,6 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
-import androidx.room.Insert;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
@@ -12,20 +11,21 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {User.class}, version = 1, exportSchema = false)
-public abstract class UserDatabase extends RoomDatabase {
+@Database(entities = {User.class, Product.class}, version = 1, exportSchema = false)
+public abstract class FoodDatabase extends RoomDatabase {
     private static final String DATABASE_NAME = "FastFood_Database";
     public static final String userTable = "userTable";
-    private static volatile UserDatabase INSTANCE;
+    public static final String productTable = "productTable";
+    private static volatile FoodDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
 
     static final ExecutorService databaseWriterExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
-    static UserDatabase getDatabase(final Context context) {
+    static FoodDatabase getDatabase(final Context context) {
         if(INSTANCE == null) {
-            synchronized (UserDatabase.class) {
+            synchronized (FoodDatabase.class) {
                 if(INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            UserDatabase.class,
+                            FoodDatabase.class,
                             DATABASE_NAME)
                             .fallbackToDestructiveMigration()
                             .addCallback(addDefaultValues)
@@ -46,14 +46,17 @@ public abstract class UserDatabase extends RoomDatabase {
                 //dao.insert(admin);
                 //dao.insert(testUser1);
                 Executors.newSingleThreadExecutor().execute(() -> {
-                    UserDAO dao = INSTANCE.userDAO();
-                    dao.deleteAll();
-                    dao.insert(new User("admin2", "admin2", "admin"));
-                    dao.insert(new User("testUser1", "testUser1", "user"));
+                    userDAO userDAO = INSTANCE.foodDAO();
+                    productDAO productDAO = INSTANCE.productDAO();
+                    userDAO.deleteAll();
+                    userDAO.insertUser(new User("admin2", "admin2", "admin"));
+                    userDAO.insertUser(new User("testUser1", "testUser1", "user"));
                 });
             });
         }
     };
 
-    public abstract UserDAO userDAO();
+    public abstract userDAO foodDAO();
+
+    public abstract productDAO productDAO();
 }
