@@ -24,9 +24,9 @@ public interface orderDAO {
     @Query("Select * from " + FoodDatabase.orderTable + " ORDER BY id")
     LiveData<List<Order>> getAllOrders();
 
-    @Query("Select * from " + FoodDatabase.orderTable + " WHERE id LIKE search")
-    LiveData<List<Product>> searchOrderByID(int search);
+    @Query("Select * from " + FoodDatabase.orderTable + " WHERE id LIKE :search")
+    LiveData<List<Order>> searchOrderByID(int search);
 
-    @Query("Select * from " + FoodDatabase.orderTable + " WHERE userID LIKE search")
-    LiveData<List<Product>> searchOrderByUserID(int search);
+    @Query("Select * from " + FoodDatabase.orderTable + " WHERE userID LIKE :search")
+    LiveData<List<Order>> searchOrderByUserID(int search);
 }

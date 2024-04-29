@@ -60,4 +60,6 @@ public abstract class FoodDatabase extends RoomDatabase {
     public abstract userDAO foodDAO();
 
     public abstract productDAO productDAO();
+
+    public abstract orderDAO orderDAO();
 }

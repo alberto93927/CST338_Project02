@@ -8,15 +8,14 @@ import java.util.List;
 
 public class OrderRepository {
 
-        private orderDAO orderDAO;
+    private orderDAO orderDAO;
 
-        public OrderRepository(Application application) {
-            FoodDatabase db = FoodDatabase.getDatabase(application);
-            this.orderDAO = db.orderDAO();
-        }
+    public OrderRepository(Application application) {
+        FoodDatabase db = FoodDatabase.getDatabase(application);
+        this.orderDAO = db.orderDAO();
+    }
 
-        public LiveData<List<Product>> searchOrderByID(int id) {
-            return orderDAO.searchOrderByID(id);
-        }
+    public LiveData<List<Order>> searchOrderByID(int id) {
+        return orderDAO.searchOrderByID(id);
     }
 }

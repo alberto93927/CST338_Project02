@@ -15,15 +15,24 @@ public class Order {
 
     private int userID;
 
-    private List<Integer> productIDs;
+    @TypeConverters({Converters.class})
+    private Cart products;
 
     @TypeConverters({Converters.class})
     private LocalDateTime date;
 
-    public Order(int userID, List<Integer> productIDs, LocalDateTime date) {
+    public Order(int userID, Cart products, LocalDateTime date) {
         this.userID = userID;
-        this.productIDs = productIDs;
+        this.products = products;
         this.date = date;
+    }
+
+    public Cart getProducts() {
+        return products;
+    }
+
+    public void setProducts(Cart products) {
+        this.products = products;
     }
 
     public int getId() {
@@ -40,14 +49,6 @@ public class Order {
 
     public void setUserID(int userID) {
         this.userID = userID;
-    }
-
-    public List<Integer> getProductIDs() {
-        return productIDs;
-    }
-
-    public void setProductIDs(List<Integer> productIDs) {
-        this.productIDs = productIDs;
     }
 
     public LocalDateTime getDate() {
