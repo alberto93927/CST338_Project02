@@ -46,6 +46,11 @@ dependencies {
 
     def room_version = "2.6.1"
 
+    def fragment_version = "1.6.2"
+    
+    implementation "androidx.fragment:fragment:$fragment_version"
+
+
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
 

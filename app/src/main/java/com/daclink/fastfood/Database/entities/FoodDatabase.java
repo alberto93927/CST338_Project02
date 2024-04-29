@@ -11,11 +11,12 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {User.class, Product.class}, version = 1, exportSchema = false)
+@Database(entities = {User.class, Product.class, Order.class}, version = 1, exportSchema = false)
 public abstract class FoodDatabase extends RoomDatabase {
     private static final String DATABASE_NAME = "FastFood_Database";
     public static final String userTable = "userTable";
     public static final String productTable = "productTable";
+    public static final String orderTable = "orderTable";
     private static volatile FoodDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
 
