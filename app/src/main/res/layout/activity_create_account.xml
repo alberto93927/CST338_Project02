@@ -68,30 +68,6 @@
         app:layout_constraintStart_toEndOf="@id/CreateAccountPasswordTextView"
         app:layout_constraintTop_toBottomOf="@id/EnterUserNameEditText" />
 
-    <TextView
-        android:id="@+id/AdminOrUserTextView"
-        android:layout_width="135dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="32dp"
-        android:gravity="center"
-        android:text="@string/type"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/EnterPasswordEditText" />
-
-    <EditText
-        android:id="@+id/AdminOrUserEditText"
-        android:layout_width="167dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="32dp"
-        android:hint="@string/admin_or_user"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@id/AdminOrUserTextView"
-        app:layout_constraintTop_toBottomOf="@id/EnterPasswordEditText" />
-
     <Button
         android:id="@+id/SubmitButton"
         android:layout_width="wrap_content"
@@ -101,6 +77,6 @@
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/AdminOrUserEditText" />
+        app:layout_constraintTop_toBottomOf="@id/EnterPasswordEditText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
