@@ -35,4 +35,8 @@ public class IntentFactory {
         return new Intent(context, OrderConfirmationActivity.class);
     }
 
+    public static Intent newCreateAccountActivityIntent(Context context){
+        return new Intent(context, CreateAccountActivity.class);
+    }
+
 }

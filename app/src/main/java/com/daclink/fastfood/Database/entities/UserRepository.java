@@ -30,6 +30,11 @@ public class UserRepository {
         );
     }
 
+    public void createUser(String name, String password, String type){
+        User newUser = new User(name, password, type);
+        FoodDatabase.databaseWriterExecutor.execute(() -> userDAO.insertUser(newUser));
+    }
+
     public LiveData<List<User>> findUserByID(String userId) {
         return userDAO.findUserByID(userId);
     }

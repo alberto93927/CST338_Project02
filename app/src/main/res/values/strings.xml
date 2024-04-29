@@ -23,4 +23,11 @@
     <string name="confirm_order">Confirm Order</string>
     <string name="return_to_main_menu">Return to Main Menu</string>
     <string name="order_confirmation">Order Confirmation</string>
+    <string name="create_account_username">Username:</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="welcome_to_fast_food_ncreate_an_account">Welcome to Fast Food!\nCreate an account!</string>
+    <string name="submit">Submit</string>
+    <string name="type">Type:</string>
+    <string name="admin_or_user">admin or user</string>
+    <string name="enter_password">Enter Password</string>
 </resources>

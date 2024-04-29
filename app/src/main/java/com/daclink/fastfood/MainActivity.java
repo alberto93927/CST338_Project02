@@ -44,17 +44,13 @@ public class MainActivity extends AppCompatActivity {
             binding.CreateButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //not implemented yet
-                    createUser();
+                    Intent intent = IntentFactory.newCreateAccountActivityIntent(MainActivity.this);
+                    startActivity(intent);
+                    finish();
                 }
             });
         }
 
     }
 
-
-
-    private void createUser(){
-
-    }
 }

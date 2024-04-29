@@ -38,7 +38,6 @@ public class LoginActivity extends AppCompatActivity {
                 String username = binding.UsernameEditText.getText().toString();
                 Log.d("Username", "User: " + username);
                 loginViewModel.setUserName(username);
-
             }
         });
 
@@ -51,7 +50,8 @@ public class LoginActivity extends AppCompatActivity {
                     String Password = binding.PasswordEditText.getText().toString();
                     //Need to implement password checking
                     String username = user.getName();
-                    Intent intent = IntentFactory.newLandingPageIntent(LoginActivity.this, username);
+                    //Intent intent = IntentFactory.newLandingPageIntent(LoginActivity.this, username);
+                    Intent intent = IntentFactory.newLandingPageIntent(LoginActivity.this);
                     editor.putString("username", user.getName());
                     editor.putBoolean("LoggedInStatus", true);
                     editor.putInt("id", user.getId());

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateAccountActivity">
+
+
+    <TextView
+        android:id="@+id/CreateAnAccountLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:text="@string/welcome_to_fast_food_ncreate_an_account"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/CreateAccountUsernameTextView"
+        android:layout_width="135dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="64dp"
+        android:gravity="center"
+        android:text="@string/create_account_username"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/CreateAnAccountLabel" />
+
+    <EditText
+        android:id="@+id/EnterUserNameEditText"
+        android:layout_width="167dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="64dp"
+        android:hint="@string/enter_username"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/CreateAccountUsernameTextView"
+        app:layout_constraintTop_toBottomOf="@id/CreateAnAccountLabel" />
+
+    <TextView
+        android:id="@+id/CreateAccountPasswordTextView"
+        android:layout_width="135dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="@string/password"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/EnterUserNameEditText" />
+
+    <EditText
+        android:id="@+id/EnterPasswordEditText"
+        android:layout_width="167dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="32dp"
+        android:hint="@string/enter_password"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/CreateAccountPasswordTextView"
+        app:layout_constraintTop_toBottomOf="@id/EnterUserNameEditText" />
+
+    <TextView
+        android:id="@+id/AdminOrUserTextView"
+        android:layout_width="135dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="@string/type"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/EnterPasswordEditText" />
+
+    <EditText
+        android:id="@+id/AdminOrUserEditText"
+        android:layout_width="167dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="32dp"
+        android:hint="@string/admin_or_user"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/AdminOrUserTextView"
+        app:layout_constraintTop_toBottomOf="@id/EnterPasswordEditText" />
+
+    <Button
+        android:id="@+id/SubmitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/submit"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/AdminOrUserEditText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
