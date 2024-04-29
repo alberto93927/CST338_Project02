@@ -1,6 +1,7 @@
 package com.daclink.fastfood.Database.entities;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -21,7 +22,7 @@ public interface productDAO {
     void deleteAll();
 
     @Query("Select * from " + FoodDatabase.productTable + " ORDER BY id")
-    LiveData<List<Product>> getAllProducts();
+    MutableLiveData<List<Product>> getAllProducts();
 
     @Query("Select * from " + FoodDatabase.productTable + " WHERE name LIKE :search")
     LiveData<List<Product>> searchProductByName(String search);

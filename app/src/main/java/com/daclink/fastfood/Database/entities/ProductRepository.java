@@ -3,6 +3,7 @@ package com.daclink.fastfood.Database.entities;
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
 
@@ -17,5 +18,9 @@ public class ProductRepository {
 
     public LiveData<List<Product>> searchProductByName(String name) {
         return productDAO.searchProductByName(name);
+    }
+
+    public MutableLiveData<List<Product>> getAllProducts() {
+        return this.productDAO.getAllProducts();
     }
 }
