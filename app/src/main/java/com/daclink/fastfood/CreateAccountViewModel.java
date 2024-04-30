@@ -28,6 +28,10 @@ public class CreateAccountViewModel extends ViewModel {
        userRepository.createUser(username, password, type);
     }
 
+    public LiveData<List<User>> checkUsernameExists(String username) {
+        return userRepository.findUserByName(username);
+    }
+
     public void findUserByID(String userID) {
         userByIDLiveData = userRepository.findUserByID(userID);
     }
