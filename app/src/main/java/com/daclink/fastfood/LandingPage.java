@@ -32,13 +32,10 @@ public class LandingPage extends AppCompatActivity {
             binding.AdminButton.setVisibility(View.VISIBLE);
         }
 
-
         binding.LogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.clear();
-                editor.apply();
+                helper.logout();
 
                 Intent intent = IntentFactory.newMainActivityIntent(LandingPage.this);
                 startActivity(intent);
