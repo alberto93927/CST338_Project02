@@ -30,4 +30,5 @@
     <string name="type">Type:</string>
     <string name="admin_or_user">admin or user</string>
     <string name="enter_password">Enter Password</string>
+    <string name="browse">Browse</string>
 </resources>

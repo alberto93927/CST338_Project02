@@ -22,7 +22,7 @@ public interface productDAO {
     void deleteAll();
 
     @Query("Select * from " + FoodDatabase.productTable + " ORDER BY id")
-    MutableLiveData<List<Product>> getAllProducts();
+    LiveData<List<Product>> getAllProducts();
 
     @Query("Select * from " + FoodDatabase.productTable + " WHERE name LIKE :search")
     LiveData<List<Product>> searchProductByName(String search);
