@@ -77,7 +77,6 @@ public class LandingPage extends AppCompatActivity {
                 new AlertDialog.Builder(LandingPage.this).setTitle("Confirm Delete").setMessage("Are you sure you want to delete your account?").setIcon(android.R.drawable.ic_dialog_alert).setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton){
 
-
                         userRepository.deleteUser(user);
                         Toast.makeText(LandingPage.this, "Account Deleted!", Toast.LENGTH_SHORT).show();
                     }
