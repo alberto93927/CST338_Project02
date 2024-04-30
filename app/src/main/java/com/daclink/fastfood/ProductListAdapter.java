@@ -16,6 +16,10 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
     private List<Product> productList;
 
+    public ProductListAdapter(List<Product> productList) {
+        this.productList = productList;
+    }
+
     @NonNull
     @Override
     public ProductListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
