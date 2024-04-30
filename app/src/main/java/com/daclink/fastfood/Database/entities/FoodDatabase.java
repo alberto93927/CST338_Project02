@@ -53,6 +53,8 @@ public abstract class FoodDatabase extends RoomDatabase {
                     userDAO.insertUser(new User("admin2", "admin2", "admin"));
                     userDAO.insertUser(new User("testUser1", "testUser1", "user"));
                     productDAO.insertProduct(new Product("Milk", "Milky", 5, 5, 2));
+                    productDAO.insertProduct(new Product("Eggs", "Eggy", 3, 10, 3));
+                    productDAO.insertProduct(new Product("Bacon", "Burnt", 10, 15, 1.5));
                 });
             });
         }

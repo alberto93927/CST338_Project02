@@ -33,9 +33,14 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         holder.bind(product);
     }
 
+    public void setData(List<Product> newData) {
+        productList = newData;
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
-        return productList.size();
+        return productList != null ? productList.size() : 0;
     }
 
     class ProductListViewHolder extends RecyclerView.ViewHolder {

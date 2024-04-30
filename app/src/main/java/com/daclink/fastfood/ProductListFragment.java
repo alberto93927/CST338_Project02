@@ -39,7 +39,7 @@ public class ProductListFragment extends Fragment {
         ProductListViewModel productListViewModel = new ProductListViewModel(productRepository);
         productListViewModel.getProductList().observe(getViewLifecycleOwner(), newData -> {
             // Update UI or adapter with new data
-          //  productListViewModel.;
+            productListAdapter.setData(newData);
         });
     }
 }

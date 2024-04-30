@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
                 //This is where we actually handle login using our LiveData
                 if (users != null && !users.isEmpty()) {
                     User user = users.get(0);
-                    String Password = binding.PasswordEditText.getText().toString();
+                    String password = binding.PasswordEditText.getText().toString();
                     //Need to implement password checking
                     String username = user.getName();
                     //Intent intent = IntentFactory.newLandingPageIntent(LoginActivity.this, username);
