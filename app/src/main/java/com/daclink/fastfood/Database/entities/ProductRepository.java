@@ -20,7 +20,7 @@ public class ProductRepository {
         return productDAO.searchProductByName(name);
     }
 
-    public MutableLiveData<List<Product>> getAllProducts() {
-        return this.productDAO.getAllProducts();
+    public LiveData<List<Product>> getAllProducts() {
+        return productDAO.getAllProducts();
     }
 }
