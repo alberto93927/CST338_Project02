@@ -20,8 +20,6 @@ import java.util.List;
 public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
-    private SharedPreferences sharedPreferences;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +28,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         UserRepository userRepository = new UserRepository(getApplication());
         LoginViewModel loginViewModel = new LoginViewModel(userRepository);
-        sharedPreferences = getSharedPreferences("fast_food_user_info", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
         binding.LoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
