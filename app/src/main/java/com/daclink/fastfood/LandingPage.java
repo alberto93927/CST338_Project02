@@ -1,6 +1,5 @@
 package com.daclink.fastfood;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,7 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.daclink.fastfood.Database.entities.UserRepository;
+import com.daclink.fastfood.Database.entities.User;
 import com.daclink.fastfood.databinding.ActivityLandingPageBinding;
 
 
@@ -19,7 +18,6 @@ public class LandingPage extends AppCompatActivity {
 
     private ActivityLandingPageBinding binding;
     private SharedPreferences sharedPreferences;
-    private UserRepository userRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +26,11 @@ public class LandingPage extends AppCompatActivity {
         setContentView(binding.getRoot());
         userRepository = new UserRepository(getApplication());
 
-        sharedPreferences = getSharedPreferences("fast_food_user_info", Context.MODE_PRIVATE);
+        SharedPreferencesHelper helper = new SharedPreferencesHelper(LandingPage.this);
+        User user = helper.getUser();
 
-        String username = sharedPreferences.getString("username", "No Name");
-        binding.usernameTextView.setText(username);
-        boolean isAdmin = sharedPreferences.getBoolean("admin", false);
+        binding.usernameTextView.setText(user.getName());
+        boolean isAdmin = user.isAdmin();
 
         if(isAdmin){
             binding.AdminButton.setVisibility(View.VISIBLE);
@@ -50,6 +48,15 @@ public class LandingPage extends AppCompatActivity {
                 editor.apply();
 
                 Intent intent = IntentFactory.newMainActivityIntent(LandingPage.this);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        binding.BrowseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = IntentFactory.newBrowseActivityIntent(LandingPage.this);
                 startActivity(intent);
                 finish();
             }

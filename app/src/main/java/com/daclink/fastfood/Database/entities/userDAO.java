@@ -1,5 +1,7 @@
 package com.daclink.fastfood.Database.entities;
 
+import android.util.Pair;
+
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -28,4 +30,8 @@ public interface userDAO {
 
     @Query("Select * from " + FoodDatabase.userTable + " WHERE id LIKE :search")
     LiveData<List<User>> findUserByID(String search);
+
+    @Query("Select * from " + FoodDatabase.userTable + " WHERE name = :name AND password = :password")
+    LiveData<List<User>> findUserByCredentials(String name, String password);
+
 }

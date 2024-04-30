@@ -16,6 +16,10 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
     private List<Product> productList;
 
+    public ProductListAdapter(List<Product> productList) {
+        this.productList = productList;
+    }
+
     @NonNull
     @Override
     public ProductListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -29,9 +33,14 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         holder.bind(product);
     }
 
+    public void setData(List<Product> newData) {
+        productList = newData;
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
-        return productList.size();
+        return productList != null ? productList.size() : 0;
     }
 
     class ProductListViewHolder extends RecyclerView.ViewHolder {
@@ -46,6 +55,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         public void bind(Product product) {
             //temp
             textView.setText(product.getName());
+
         }
 
     }
