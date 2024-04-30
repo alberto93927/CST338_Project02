@@ -35,6 +35,12 @@ public class UserRepository {
         FoodDatabase.databaseWriterExecutor.execute(() -> userDAO.insertUser(newUser));
     }
 
+    public void deleteUser(User user) {
+        FoodDatabase.databaseWriterExecutor.execute(() -> {
+            userDAO.deleteUser(user);
+        });
+    }
+
     public LiveData<List<User>> findUserByID(String userId) {
         return userDAO.findUserByID(userId);
     }
