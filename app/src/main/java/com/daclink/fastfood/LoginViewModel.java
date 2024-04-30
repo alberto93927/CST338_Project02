@@ -1,5 +1,7 @@
 package com.daclink.fastfood;
 
+import android.util.Pair;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
@@ -16,12 +18,21 @@ public class LoginViewModel extends ViewModel {
     private LiveData<List<User>> userByIDLiveData;
     private LiveData<List<User>> userByNameLiveData;
 
+    private LiveData<List<User>> userByCredentialsLiveData;
+
+
     private MutableLiveData<String> userNameLiveData = new MutableLiveData<>();
     private MutableLiveData<String> userIDLiveData = new MutableLiveData<>();
 
+    private MutableLiveData<Pair<String, String>> userCredentialsLiveData = new MutableLiveData<>();
+
     public LoginViewModel(UserRepository userRepository) {
         this.userRepository = userRepository;
-        userByNameLiveData = Transformations.switchMap(userNameLiveData, name -> userRepository.findUserByName(name));
+        userByCredentialsLiveData = Transformations.switchMap(userCredentialsLiveData, credentials -> userRepository.findUserByCredentials(credentials));
+    }
+
+    public LiveData<List<User>> getUserByCredentialsLiveData() {
+        return userByCredentialsLiveData;
     }
 
     public void findUserByID(String userID) {
@@ -46,5 +57,9 @@ public class LoginViewModel extends ViewModel {
 
     public void setUserName(String userId) {
         userNameLiveData.setValue(userId);
+    }
+
+    public void setUserCredentialsLiveData(String name, String pass) {
+        userCredentialsLiveData.setValue(new Pair<>(name, pass));
     }
 }

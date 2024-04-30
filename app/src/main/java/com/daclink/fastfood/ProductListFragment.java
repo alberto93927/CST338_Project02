@@ -12,6 +12,9 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.daclink.fastfood.Database.entities.ProductRepository;
+import com.daclink.fastfood.Database.entities.UserRepository;
+
 public class ProductListFragment extends Fragment {
 
     private RecyclerView recyclerView;
@@ -23,18 +26,20 @@ public class ProductListFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_product_list, container, false);
         recyclerView = rootView.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        productListAdapter = new ProductListAdapter();
+        productListAdapter = new ProductListAdapter(null);
         recyclerView.setAdapter(productListAdapter);
+
         return rootView;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        productListViewModel = new ViewModelProvider(this).get(ProductListViewModel.class);
+        ProductRepository productRepository = new ProductRepository(requireActivity().getApplication());
+        ProductListViewModel productListViewModel = new ProductListViewModel(productRepository);
         productListViewModel.getProductList().observe(getViewLifecycleOwner(), newData -> {
             // Update UI or adapter with new data
-          //  productListViewModel.;
+            productListAdapter.setData(newData);
         });
     }
 }

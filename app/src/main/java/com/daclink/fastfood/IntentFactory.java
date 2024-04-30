@@ -39,4 +39,7 @@ public class IntentFactory {
         return new Intent(context, CreateAccountActivity.class);
     }
 
+    public static Intent newBrowseActivityIntent(Context context) {
+        return new Intent(context, BrowseActivity.class);
+    }
 }
