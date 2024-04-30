@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.daclink.fastfood.Database.entities.User;
+import com.daclink.fastfood.Database.entities.UserRepository;
 import com.daclink.fastfood.databinding.ActivityLandingPageBinding;
 
 
@@ -18,14 +20,15 @@ public class LandingPage extends AppCompatActivity {
 
     private ActivityLandingPageBinding binding;
     private SharedPreferences sharedPreferences;
+    private UserRepository userRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityLandingPageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        userRepository = new UserRepository(getApplication());
 
+        userRepository = new UserRepository(getApplication());
         SharedPreferencesHelper helper = new SharedPreferencesHelper(LandingPage.this);
         User user = helper.getUser();
 
@@ -78,7 +81,7 @@ public class LandingPage extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int whichButton){
 
 
-                        //userRepository.deleteUser();
+                        userRepository.deleteUser(user);
                         Toast.makeText(LandingPage.this, "Account Deleted!", Toast.LENGTH_SHORT).show();
                     }
                 })
