@@ -53,12 +53,9 @@ public class LoginActivity extends AppCompatActivity {
                     String username = user.getName();
                     //Intent intent = IntentFactory.newLandingPageIntent(LoginActivity.this, username);
                     Intent intent = IntentFactory.newLandingPageIntent(LoginActivity.this);
-                    editor.putString("username", user.getName());
-                    editor.putBoolean("LoggedInStatus", true);
-                    editor.putInt("id", user.getId());
-                    editor.putBoolean("admin", user.isAdmin());
-                    editor.apply();
+                    SharedPreferencesHelper helper = new SharedPreferencesHelper(LoginActivity.this);
                     Log.d("UserData", "User ID: " + user.getId() + ", Name: " + user.getName());
+                    helper.saveUser(user);
                     startActivity(intent);
                     finish();
                 } else {

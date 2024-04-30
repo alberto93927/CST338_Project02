@@ -55,6 +55,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         public void bind(Product product) {
             //temp
             textView.setText(product.getName());
+
         }
 
     }

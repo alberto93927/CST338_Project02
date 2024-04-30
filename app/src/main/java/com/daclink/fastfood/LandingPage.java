@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.daclink.fastfood.Database.entities.User;
 import com.daclink.fastfood.databinding.ActivityLandingPageBinding;
 
 
@@ -20,11 +22,11 @@ public class LandingPage extends AppCompatActivity {
         binding = ActivityLandingPageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        sharedPreferences = getSharedPreferences("fast_food_user_info", Context.MODE_PRIVATE);
+        SharedPreferencesHelper helper = new SharedPreferencesHelper(LandingPage.this);
+        User user = helper.getUser();
 
-        String username = sharedPreferences.getString("username", "No Name");
-        binding.usernameTextView.setText(username);
-        boolean isAdmin = sharedPreferences.getBoolean("admin", false);
+        binding.usernameTextView.setText(user.getName());
+        boolean isAdmin = user.isAdmin();
 
         if(isAdmin){
             binding.AdminButton.setVisibility(View.VISIBLE);
