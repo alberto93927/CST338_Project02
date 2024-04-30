@@ -1,8 +1,10 @@
 package com.daclink.fastfood;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -33,6 +35,13 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     public void onBindViewHolder(@NonNull ProductListViewHolder holder, int position) {
         Product product = productList.get(position);
         holder.bind(product);
+        holder.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Notify the listener of the button click
+                Log.d("Product", "clucked");
+            }
+        });
     }
 
     public void setData(List<Product> newData) {
@@ -53,6 +62,8 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         private TextView quantityTextView;
         private TextView weightTextView;
 
+        Button button;
+
         public ProductListViewHolder(@NonNull View itemView) {
             super(itemView);
             nameTextView = itemView.findViewById(R.id.text_view_name);
@@ -60,6 +71,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
             priceTextView = itemView.findViewById(R.id.text_view_price);
             quantityTextView = itemView.findViewById(R.id.text_view_quantity);
             weightTextView = itemView.findViewById(R.id.text_view_weight);
+            button = itemView.findViewById(R.id.add_to_cart_button);
         }
 
         public void bind(Product product) {
