@@ -33,4 +33,10 @@ public class SharedPreferencesHelper {
         }
         return null;
     }
+
+    public void logout() {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove(KEY_USER);
+        editor.apply();
+    }
 }
