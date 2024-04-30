@@ -1,6 +1,7 @@
 package com.daclink.fastfood.Database.entities;
 
 import android.app.Application;
+import android.util.Pair;
 
 import androidx.lifecycle.LiveData;
 
@@ -41,5 +42,9 @@ public class UserRepository {
 
     public LiveData<List<User>> findUserByName(String name) {
         return userDAO.findUserByName(name);
+    }
+
+    public LiveData<List<User>> findUserByCredentials(Pair<String, String> credentials) {
+        return userDAO.findUserByCredentials(credentials.first, credentials.second);
     }
 }

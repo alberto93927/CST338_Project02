@@ -36,12 +36,13 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String username = binding.UsernameEditText.getText().toString();
+                String password = binding.PasswordEditText.getText().toString();
                 Log.d("Username", "User: " + username);
-                loginViewModel.setUserName(username);
+                loginViewModel.setUserCredentialsLiveData(username, password);
             }
         });
 
-        loginViewModel.getUserByNameLiveData().observe(this, new Observer<List<User>>() {
+        loginViewModel.getUserByCredentialsLiveData().observe(this, new Observer<List<User>>() {
             @Override
             public void onChanged(List<User> users) {
                 //This is where we actually handle login using our LiveData
