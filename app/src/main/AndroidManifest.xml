@@ -10,13 +10,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FastFood"
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
         tools:targetApi="31">
         <activity
             android:name=".BrowseActivity"
             android:exported="false" />
         <activity
             android:name=".CreateAccountActivity"
+            android:parentActivityName=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".OrderConfirmationActivity"
@@ -29,9 +30,11 @@
             android:exported="false" />
         <activity
             android:name=".LandingPage"
+            android:parentActivityName=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
+            android:parentActivityName=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

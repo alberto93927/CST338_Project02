@@ -27,6 +27,8 @@ public class LandingPage extends AppCompatActivity {
         binding = ActivityLandingPageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         userRepository = new UserRepository(getApplication());
         SharedPreferencesHelper helper = new SharedPreferencesHelper(LandingPage.this);
         User user = helper.getUser();

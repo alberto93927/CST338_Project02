@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.daclink.fastfood.Database.entities.User;
 import com.daclink.fastfood.databinding.ActivityMainBinding;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
@@ -18,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
 
         SharedPreferencesHelper helper = new SharedPreferencesHelper(this);
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = IntentFactory.newLoginActivityIntent(MainActivity.this);
                     startActivity(intent);
-                    finish();
+                    //finish();
                 }
             });
 
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = IntentFactory.newCreateAccountActivityIntent(MainActivity.this);
                     startActivity(intent);
-                    finish();
+                    //finish();
                 }
             });
         }

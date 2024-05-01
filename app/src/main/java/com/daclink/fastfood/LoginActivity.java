@@ -26,6 +26,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         UserRepository userRepository = new UserRepository(getApplication());
         LoginViewModel loginViewModel = new LoginViewModel(userRepository);
         binding.LoginButton.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                     Log.d("UserData", "User ID: " + user.getId() + ", Name: " + user.getName());
                     helper.saveUser(user);
                     startActivity(intent);
-                    finish();
+                    //finish();
                 } else {
                     // User not found or list empty
                     Log.d("UserData", "User not found");
