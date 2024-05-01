@@ -27,7 +27,7 @@ public class LandingPage extends AppCompatActivity {
         binding = ActivityLandingPageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         userRepository = new UserRepository(getApplication());
         SharedPreferencesHelper helper = new SharedPreferencesHelper(LandingPage.this);
@@ -59,7 +59,7 @@ public class LandingPage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = IntentFactory.newBrowseActivityIntent(LandingPage.this);
                 startActivity(intent);
-                finish();
+                //finish();
             }
         });
 

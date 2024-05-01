@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                     Log.d("UserData", "User ID: " + user.getId() + ", Name: " + user.getName());
                     helper.saveUser(user);
                     startActivity(intent);
-                    //finish();
+                    finish();
                 } else {
                     // User not found or list empty
                     Log.d("UserData", "User not found");
