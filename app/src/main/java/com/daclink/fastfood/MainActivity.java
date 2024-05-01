@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences("fast_food_user_info", Context.MODE_PRIVATE);
 
+
         if(sharedPreferences.getBoolean("LoggedInStatus", false)){
             Intent intent = IntentFactory.newLandingPageIntent(MainActivity.this);
             startActivity(intent);

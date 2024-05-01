@@ -79,6 +79,11 @@ public class LandingPage extends AppCompatActivity {
 
                         userRepository.deleteUser(user);
                         Toast.makeText(LandingPage.this, "Account Deleted!", Toast.LENGTH_SHORT).show();
+                        //SharedPreferencesHelper helper = new SharedPreferencesHelper(LandingPage.this);
+                        helper.logout();
+                        Intent intent = IntentFactory.newMainActivityIntent(LandingPage.this);
+                        startActivity(intent);
+                        finish();
                     }
                 })
                         .setNegativeButton(android.R.string.no, null).show();

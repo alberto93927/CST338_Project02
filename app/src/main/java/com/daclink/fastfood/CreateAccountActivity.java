@@ -33,8 +33,6 @@ public class CreateAccountActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         UserRepository userRepository = new UserRepository(getApplication());
-        //CreateAccountViewModel
-
         createAccountViewModel = new CreateAccountViewModel(userRepository);
 
 
@@ -68,13 +66,16 @@ public class CreateAccountActivity extends AppCompatActivity {
             createAccountViewModel.createUser(username, password, type);
             Toast.makeText(this, "Account created successfully!", Toast.LENGTH_SHORT).show();
 
-            sharedPreferences = getSharedPreferences("fast_food_user_info", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("username", username);
-            editor.putBoolean("LoggedInStatus", true);
+            //sharedPreferences = getSharedPreferences("fast_food_user_info", Context.MODE_PRIVATE);
+            //SharedPreferences.Editor editor = sharedPreferences.edit();
+            //editor.putString("username", username);
+            //editor.putBoolean("LoggedInStatus", true);
             //editor.putInt("id", user.getId());
             //editor.putBoolean("admin", user.isAdmin());
-            editor.apply();
+            //editor.apply();
+
+            SharedPreferencesHelper helper = new SharedPreferencesHelper(getApplicationContext());
+            helper.saveUser(new User(username, password, type));
 
             Intent intent = IntentFactory.newLandingPageIntent(CreateAccountActivity.this);
             startActivity(intent);
