@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.daclink.fastfood.Database.entities.ProductRepository;
+import com.daclink.fastfood.Database.entities.User;
 import com.daclink.fastfood.Database.entities.UserRepository;
 
 public class ProductListFragment extends Fragment {
@@ -26,9 +27,10 @@ public class ProductListFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_product_list, container, false);
         recyclerView = rootView.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        productListAdapter = new ProductListAdapter(null);
+        SharedPreferencesHelper helper = new SharedPreferencesHelper(getContext());
+        User user = helper.getUser();
+        productListAdapter = new ProductListAdapter(null, user);
         recyclerView.setAdapter(productListAdapter);
-
         return rootView;
     }
 
@@ -36,7 +38,9 @@ public class ProductListFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ProductRepository productRepository = new ProductRepository(requireActivity().getApplication());
-        ProductListViewModel productListViewModel = new ProductListViewModel(productRepository);
+        UserRepository userRepository = new UserRepository(requireActivity().getApplication());
+        ProductListViewModel productListViewModel = new ProductListViewModel(productRepository, userRepository);
+
         productListViewModel.getProductList().observe(getViewLifecycleOwner(), newData -> {
             // Update UI or adapter with new data
             productListAdapter.setData(newData);

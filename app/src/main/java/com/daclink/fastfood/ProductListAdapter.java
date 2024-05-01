@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.daclink.fastfood.Database.entities.Product;
+import com.daclink.fastfood.Database.entities.User;
 import com.google.gson.Gson;
 
 import org.w3c.dom.Text;
@@ -27,9 +29,11 @@ import java.util.List;
 public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.ProductListViewHolder> {
 
     private List<Product> productList;
+    private User user;
 
-    public ProductListAdapter(List<Product> productList) {
+    public ProductListAdapter(List<Product> productList, User user) {
         this.productList = productList;
+        this.user = user;
     }
 
     @NonNull
@@ -44,7 +48,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         Product product = productList.get(position);
         Gson gson = new Gson();
         holder.bind(product);
-        holder.button.setOnClickListener(new View.OnClickListener() {
+        holder.viewDetailsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Notify the listener of the button click
@@ -57,6 +61,31 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
                 ProductFragment productFragment = new ProductFragment();
                 productFragment.setArguments(bundle);
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, productFragment).addToBackStack(null).commit();
+            }
+        });
+
+        holder.addToCartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Notify the listener of the button click
+                Log.d("User", user.getName());
+                Log.d("Product", product.getName());
+                user.addToCart(product.getId());
+                Log.d("added: ", String.valueOf(user.getCart().getProductIDs()));
+                Context context = v.getContext();
+                Toast.makeText(context, product.getName() + " added to cart", Toast.LENGTH_SHORT).show();
+
+                //Bundle bundle = new Bundle();
+
+                //Bundle bundle = new Bundle();
+               // String productJson = gson.toJson(product);
+                //bundle.putString("KEY_PRODUCT", productJson);
+
+               /* AppCompatActivity activity = (AppCompatActivity) unwrap(v.getContext());
+                ProductFragment productFragment = new ProductFragment();
+                productFragment.setArguments(bundle);
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, productFragment).addToBackStack(null).commit();
+           */
             }
         });
     }
@@ -87,7 +116,8 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         private TextView quantityTextView;
         private TextView weightTextView;
 
-        Button button;
+        Button addToCartButton;
+        Button viewDetailsButton;
 
         public ProductListViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -96,7 +126,8 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
             priceTextView = itemView.findViewById(R.id.text_view_price);
             quantityTextView = itemView.findViewById(R.id.text_view_quantity);
             weightTextView = itemView.findViewById(R.id.text_view_weight);
-            button = itemView.findViewById(R.id.add_to_cart_button);
+            viewDetailsButton = itemView.findViewById(R.id.view_details_button);
+            addToCartButton = itemView.findViewById(R.id.add_to_cart_button);
         }
 
         public void bind(Product product) {

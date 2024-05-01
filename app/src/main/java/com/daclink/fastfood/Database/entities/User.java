@@ -19,6 +19,7 @@ public class User {
         this.name = name;
         this.password = password;
         this.type = type;
+        this.cart = new Cart(0);
         //Might need to add userID to constructor
     }
 
@@ -44,6 +45,10 @@ public class User {
 
     public void setCart(Cart cart) {
         this.cart = cart;
+    }
+
+    public void addToCart(int productID) {
+        this.cart.addProduct(productID);
     }
 
     public String getName() {

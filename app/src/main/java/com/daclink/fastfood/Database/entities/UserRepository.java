@@ -42,6 +42,14 @@ public class UserRepository {
         });
     }
 
+    public void addToCart(Product product) {
+
+    }
+
+    public void addToCart(Product product, int quantity) {
+
+    }
+
     public LiveData<List<User>> findUserByID(String userId) {
         return userDAO.findUserByID(userId);
     }
