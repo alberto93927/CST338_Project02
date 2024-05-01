@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         UserRepository userRepository = new UserRepository(getApplication());
         LoginViewModel loginViewModel = new LoginViewModel(userRepository);

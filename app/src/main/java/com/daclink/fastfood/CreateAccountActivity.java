@@ -30,7 +30,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityCreateAccountBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         UserRepository userRepository = new UserRepository(getApplication());
         createAccountViewModel = new CreateAccountViewModel(userRepository);
