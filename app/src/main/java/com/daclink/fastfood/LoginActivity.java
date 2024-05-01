@@ -47,7 +47,6 @@ public class LoginActivity extends AppCompatActivity {
                     String password = binding.PasswordEditText.getText().toString();
                     //Need to implement password checking
                     String username = user.getName();
-                    //Intent intent = IntentFactory.newLandingPageIntent(LoginActivity.this, username);
                     Intent intent = IntentFactory.newLandingPageIntent(LoginActivity.this);
                     SharedPreferencesHelper helper = new SharedPreferencesHelper(LoginActivity.this);
                     Log.d("UserData", "User ID: " + user.getId() + ", Name: " + user.getName());

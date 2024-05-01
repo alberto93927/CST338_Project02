@@ -23,7 +23,6 @@ import java.util.List;
 public class CreateAccountActivity extends AppCompatActivity {
 
     private ActivityCreateAccountBinding binding;
-    private SharedPreferences sharedPreferences;
     private CreateAccountViewModel createAccountViewModel;
 
     @Override
@@ -65,14 +64,6 @@ public class CreateAccountActivity extends AppCompatActivity {
 
             createAccountViewModel.createUser(username, password, type);
             Toast.makeText(this, "Account created successfully!", Toast.LENGTH_SHORT).show();
-
-            //sharedPreferences = getSharedPreferences("fast_food_user_info", Context.MODE_PRIVATE);
-            //SharedPreferences.Editor editor = sharedPreferences.edit();
-            //editor.putString("username", username);
-            //editor.putBoolean("LoggedInStatus", true);
-            //editor.putInt("id", user.getId());
-            //editor.putBoolean("admin", user.isAdmin());
-            //editor.apply();
 
             SharedPreferencesHelper helper = new SharedPreferencesHelper(getApplicationContext());
             helper.saveUser(new User(username, password, type));

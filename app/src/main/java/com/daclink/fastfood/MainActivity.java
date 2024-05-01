@@ -8,6 +8,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.daclink.fastfood.Database.entities.User;
 import com.daclink.fastfood.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,10 +21,10 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("fast_food_user_info", Context.MODE_PRIVATE);
+        SharedPreferencesHelper helper = new SharedPreferencesHelper(this);
+        User user = helper.getUser();
 
-
-        if(sharedPreferences.getBoolean("LoggedInStatus", false)){
+        if(user != null){
             Intent intent = IntentFactory.newLandingPageIntent(MainActivity.this);
             startActivity(intent);
             finish();

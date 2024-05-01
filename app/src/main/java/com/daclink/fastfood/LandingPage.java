@@ -19,7 +19,6 @@ import com.daclink.fastfood.databinding.ActivityLandingPageBinding;
 public class LandingPage extends AppCompatActivity {
 
     private ActivityLandingPageBinding binding;
-    private SharedPreferences sharedPreferences;
     private UserRepository userRepository;
 
     @Override
@@ -79,7 +78,6 @@ public class LandingPage extends AppCompatActivity {
 
                         userRepository.deleteUser(user);
                         Toast.makeText(LandingPage.this, "Account Deleted!", Toast.LENGTH_SHORT).show();
-                        //SharedPreferencesHelper helper = new SharedPreferencesHelper(LandingPage.this);
                         helper.logout();
                         Intent intent = IntentFactory.newMainActivityIntent(LandingPage.this);
                         startActivity(intent);
