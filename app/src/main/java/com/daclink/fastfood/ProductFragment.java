@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.daclink.fastfood.Database.entities.Product;
 import com.google.gson.Gson;
@@ -19,6 +20,11 @@ import com.google.gson.Gson;
 public class ProductFragment extends Fragment {
 
     private ProductViewModel mViewModel;
+    private TextView nameTextView;
+    private TextView descriptionTextView;
+    private TextView priceTextView;
+    private TextView quantityTextView;
+    private TextView weightTextView;
 
     public static ProductFragment newInstance() {
         return new ProductFragment();
@@ -32,8 +38,12 @@ public class ProductFragment extends Fragment {
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+
+
+
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(ProductViewModel.class);
+
         Gson gson = new Gson();
         Product product = gson.fromJson(getArguments().getString("KEY_PRODUCT"), Product.class);
         Log.d("", product.getName());

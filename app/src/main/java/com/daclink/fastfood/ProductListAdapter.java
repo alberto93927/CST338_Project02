@@ -106,7 +106,6 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
             priceTextView.setText(String.valueOf(product.getPrice()));
             quantityTextView.setText(String.valueOf(product.getQuantity()));
             weightTextView.setText(String.valueOf(product.getWeight()));
-
         }
 
     }
