@@ -30,7 +30,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityCreateAccountBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         UserRepository userRepository = new UserRepository(getApplication());
         createAccountViewModel = new CreateAccountViewModel(userRepository);
@@ -71,7 +71,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
             Intent intent = IntentFactory.newLandingPageIntent(CreateAccountActivity.this);
             startActivity(intent);
-            //finish();
+            finish();
         }
         else{
             Toast.makeText(this, "Please fill out all the fields.", Toast.LENGTH_SHORT).show();

@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = IntentFactory.newLoginActivityIntent(MainActivity.this);
                     startActivity(intent);
-                    //finish();
+                    finish();
                 }
             });
 
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = IntentFactory.newCreateAccountActivityIntent(MainActivity.this);
                     startActivity(intent);
-                    //finish();
+                    finish();
                 }
             });
         }

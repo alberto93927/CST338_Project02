@@ -13,6 +13,7 @@ public class BrowseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browse);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Check if the fragment container exists in the layout
         if (findViewById(R.id.fragment_container) != null) {
