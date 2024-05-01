@@ -1,5 +1,9 @@
 package com.daclink.fastfood;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.ContextWrapper;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,9 +12,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.daclink.fastfood.Database.entities.Product;
+import com.google.gson.Gson;
 
 import org.w3c.dom.Text;
 
@@ -34,14 +42,31 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     @Override
     public void onBindViewHolder(@NonNull ProductListViewHolder holder, int position) {
         Product product = productList.get(position);
+        Gson gson = new Gson();
         holder.bind(product);
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Notify the listener of the button click
                 Log.d("Product", "clucked");
+                Bundle bundle = new Bundle();
+                String productJson = gson.toJson(product);
+                bundle.putString("KEY_PRODUCT", productJson);
+
+                AppCompatActivity activity = (AppCompatActivity) unwrap(v.getContext());
+                ProductFragment productFragment = new ProductFragment();
+                productFragment.setArguments(bundle);
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, productFragment).addToBackStack(null).commit();
             }
         });
+    }
+
+    private static Activity unwrap(Context context) {
+        while (!(context instanceof Activity) && context instanceof ContextWrapper) {
+            context = ((ContextWrapper) context).getBaseContext();
+        }
+
+        return (Activity) context;
     }
 
     public void setData(List<Product> newData) {
