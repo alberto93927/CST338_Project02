@@ -13,13 +13,17 @@
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".BrowseActivity"
+            android:name=".AdminActivity"
             android:parentActivityName=".LandingPage"
             android:exported="false" />
         <activity
+            android:name=".BrowseActivity"
+            android:exported="false"
+            android:parentActivityName=".LandingPage" />
+        <activity
             android:name=".CreateAccountActivity"
-            android:parentActivityName=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".OrderConfirmationActivity"
             android:exported="false" />
@@ -31,12 +35,12 @@
             android:exported="false" />
         <activity
             android:name=".LandingPage"
-            android:parentActivityName=".LoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".LoginActivity" />
         <activity
             android:name=".LoginActivity"
-            android:parentActivityName=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

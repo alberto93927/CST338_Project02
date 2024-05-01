@@ -42,4 +42,8 @@ public class IntentFactory {
     public static Intent newBrowseActivityIntent(Context context) {
         return new Intent(context, BrowseActivity.class);
     }
+
+    public static Intent newAdminActivityIntent(Context context){
+        return new Intent(context, AdminActivity.class);
+    }
 }

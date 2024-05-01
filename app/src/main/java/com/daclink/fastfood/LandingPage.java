@@ -90,5 +90,13 @@ public class LandingPage extends AppCompatActivity {
             }
         });
 
+        binding.AdminButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = IntentFactory.newAdminActivityIntent(LandingPage.this);
+                startActivity(intent);
+            }
+        });
+
     }
 }
