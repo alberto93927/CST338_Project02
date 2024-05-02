@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.daclink.fastfood.Database.entities.Product;
@@ -62,12 +63,16 @@ public class CartViewAdapter extends RecyclerView.Adapter<CartViewAdapter.ViewHo
         public final TextView mContentView;
 
         public final TextView quantityView;
+        Button plusButton;
+        Button minusButton;
 
         public ViewHolder(View view) {
             super(view);
             mIdView = itemView.findViewById(R.id.text_product_name);
             mContentView = itemView.findViewById(R.id.text_product_description);
             quantityView = itemView.findViewById(R.id.text_user_quantity);
+            plusButton = itemView.findViewById(R.id.plus_button);
+            minusButton = itemView.findViewById(R.id.minus_button);
         }
 
         @Override

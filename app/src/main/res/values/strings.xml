@@ -38,4 +38,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="view_cart">View Cart</string>
     <string name="checkout">Checkout</string>
+    <string name="minus">-</string>
+    <string name="plus">+</string>
 </resources>
