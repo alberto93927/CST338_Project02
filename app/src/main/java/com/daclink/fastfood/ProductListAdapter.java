@@ -65,11 +65,16 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
             // Notify the listener of the button click
             Log.d("User", user.getName());
             Log.d("Product", product.getName());
-            user.addToCart(product.getId());
-            Log.d("added: ", String.valueOf(user.getCart().getProductIDs()));
             Context context = v.getContext();
-            Toast.makeText(context, product.getName() + " added to cart", Toast.LENGTH_SHORT).show();
-            helper.saveUser(user);
+            if(user.getCart().getProductQuantity(product.getId()) < product.getQuantity()) {
+                user.addToCart(product.getId());
+                Log.d("added: ", String.valueOf(user.getCart().getProductIDs()));
+
+                Toast.makeText(context, product.getName() + " added to cart", Toast.LENGTH_SHORT).show();
+                helper.saveUser(user);
+            } else {
+                Toast.makeText(context, product.getName() + " has no more stock", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
