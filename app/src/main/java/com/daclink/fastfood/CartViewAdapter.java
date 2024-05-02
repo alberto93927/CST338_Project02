@@ -1,23 +1,32 @@
 package com.daclink.fastfood;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.daclink.fastfood.Database.entities.Product;
+import com.daclink.fastfood.Database.entities.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyProductRecyclerViewAdapter extends RecyclerView.Adapter<MyProductRecyclerViewAdapter.ViewHolder> {
+public class CartViewAdapter extends RecyclerView.Adapter<CartViewAdapter.ViewHolder> {
 
     private List<Product> productList = new ArrayList<>();
+    private User user;
 
     public void setProducts(List<Product> productList) {
         this.productList = productList;
         notifyDataSetChanged();
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+        Log.d("user", user.getName());
     }
 
     @Override

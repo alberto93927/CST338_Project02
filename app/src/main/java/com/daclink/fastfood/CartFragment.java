@@ -1,11 +1,9 @@
 package com.daclink.fastfood;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,8 +26,9 @@ public class CartFragment extends Fragment {
     private static final String ARG_COLUMN_COUNT = "column-count";
     private CartViewModel viewModel;
     Cart cart;
+    User user;
 
-    private MyProductRecyclerViewAdapter adapter;
+    private CartViewAdapter adapter;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -53,7 +52,7 @@ public class CartFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SharedPreferencesHelper helper = new SharedPreferencesHelper(getContext());
-        User user = helper.getUser();
+        user = helper.getUser();
         cart = user.getCart();
         viewModel = new ViewModelProvider(this).get(CartViewModel.class);
         viewModel.init(new ProductRepository(requireActivity().getApplication()), user.getCart());
@@ -69,9 +68,9 @@ public class CartFragment extends Fragment {
         // Set up RecyclerView
         RecyclerView recyclerView = view.findViewById(R.id.list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new MyProductRecyclerViewAdapter();
+        adapter = new CartViewAdapter();
         recyclerView.setAdapter(adapter);
-
+        adapter.setUser(user);
         // Observe data changes
         viewModel.getProductList().observe(getViewLifecycleOwner(), productList -> {
             adapter.setProducts(productList);
