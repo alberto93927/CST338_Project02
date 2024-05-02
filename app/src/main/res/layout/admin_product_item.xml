@@ -9,36 +9,58 @@
         android:id="@+id/product_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Product Name"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:text="Product Name" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/product_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="Product Description" />
+        android:text="Product Description"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/product_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="Product Price" />
+        android:text="Product Price"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/product_quantity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="Product Quantity" />
+        android:text="Product Quantity"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/product_weight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="Product Weight" />
+        android:text="Product Weight"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/AdminRemoveItemButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Remove Item" />
+
+        <Button
+            android:id="@+id/AdminUpdateItemButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Update Item" />
+
+    </LinearLayout>
+
 
 </LinearLayout>
