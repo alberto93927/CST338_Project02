@@ -1,5 +1,7 @@
 package com.daclink.fastfood.Database.entities;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -21,6 +23,8 @@ public class Cart {
     public void addProduct(int productID) {
         if(!productIDs.containsKey(productID)) {
             productIDs.put(productID, 1);
+        } else {
+            productIDs.put(productID, productIDs.get(productID) + 1);
         }
     }
 
@@ -28,6 +32,13 @@ public class Cart {
         if(productIDs.containsKey(productID)) {
             productIDs.remove(productID);
         }
+    }
+
+    public int getProductQuantity(int productID) {
+        if(productIDs.containsKey(productID)) {
+            return productIDs.get(productID);
+        }
+        return 0;
     }
 
     public boolean hasProduct(int productID) {

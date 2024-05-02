@@ -68,9 +68,9 @@ public class CartFragment extends Fragment {
         // Set up RecyclerView
         RecyclerView recyclerView = view.findViewById(R.id.list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new CartViewAdapter();
+        adapter = new CartViewAdapter(user);
         recyclerView.setAdapter(adapter);
-        adapter.setUser(user);
+
         // Observe data changes
         viewModel.getProductList().observe(getViewLifecycleOwner(), productList -> {
             adapter.setProducts(productList);

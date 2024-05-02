@@ -19,6 +19,10 @@ public class CartViewAdapter extends RecyclerView.Adapter<CartViewAdapter.ViewHo
     private List<Product> productList = new ArrayList<>();
     private User user;
 
+    public CartViewAdapter(User user) {
+        this.user = user;
+    }
+
     public void setProducts(List<Product> productList) {
         this.productList = productList;
         notifyDataSetChanged();
@@ -26,14 +30,16 @@ public class CartViewAdapter extends RecyclerView.Adapter<CartViewAdapter.ViewHo
 
     public void setUser(User user) {
         this.user = user;
-        Log.d("user", user.getName());
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
+        Log.d("user", user.getName());
+        Log.d("cartcontents2", String.valueOf(user.getCart().getProductIDs()));
         Product product = productList.get(position);
         holder.mIdView.setText(product.getName());
         holder.mContentView.setText(product.getDescription());
+        holder.quantityView.setText(String.valueOf(user.getCart().getProductQuantity(product.getId())));
     }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -55,10 +61,13 @@ public class CartViewAdapter extends RecyclerView.Adapter<CartViewAdapter.ViewHo
         public final TextView mIdView;
         public final TextView mContentView;
 
+        public final TextView quantityView;
+
         public ViewHolder(View view) {
             super(view);
             mIdView = itemView.findViewById(R.id.text_product_name);
             mContentView = itemView.findViewById(R.id.text_product_description);
+            quantityView = itemView.findViewById(R.id.text_user_quantity);
         }
 
         @Override
