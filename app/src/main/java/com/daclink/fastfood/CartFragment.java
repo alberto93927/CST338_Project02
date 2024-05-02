@@ -26,6 +26,8 @@ public class CartFragment extends Fragment {
     private static final String ARG_COLUMN_COUNT = "column-count";
     private SharedViewModel sharedViewModel;
     private CartViewModel viewModel;
+
+    SharedPreferencesHelper helper;
     Cart cart;
     User user;
 
@@ -54,13 +56,10 @@ public class CartFragment extends Fragment {
         super.onCreate(savedInstanceState);
         SharedPreferencesHelper helper = new SharedPreferencesHelper(getContext());
         user = helper.getUser();
-        cart = user.getCart();
         viewModel = new ViewModelProvider(this).get(CartViewModel.class);
         viewModel.init(new ProductRepository(requireActivity().getApplication()), user.getCart());
         sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
         sharedViewModel.setCurrentFragmentTag("Cart");
-
-        Log.d("cartcontents", String.valueOf(cart.getProductIDs()));
     }
 
     @Override
@@ -71,8 +70,6 @@ public class CartFragment extends Fragment {
         // Set up RecyclerView
         RecyclerView recyclerView = view.findViewById(R.id.list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        SharedPreferencesHelper helper = new SharedPreferencesHelper(getContext());
-
         adapter = new CartViewAdapter(user, helper);
         recyclerView.setAdapter(adapter);
 
