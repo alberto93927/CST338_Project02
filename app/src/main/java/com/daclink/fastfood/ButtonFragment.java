@@ -74,14 +74,14 @@ public class ButtonFragment extends Fragment {
             switch (tag) {
                 case "Browse":
                     Log.d("FragmentTag", "Browse");
-                    button1.setText("View Cart");
+                    button1.setText(R.string.view_cart);
                     button1.setOnClickListener(v -> {
                         AppCompatActivity activity = (AppCompatActivity) unwrap(v.getContext());
                         CartFragment cartFragment = new CartFragment();
                         activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, cartFragment).addToBackStack(null).commit();
                     });
 
-                    button2.setText("Checkout");
+                    button2.setText(R.string.checkout);
                     button2.setOnClickListener(v -> {
                         AppCompatActivity activity = (AppCompatActivity) unwrap(v.getContext());
                         CheckoutFragment checkoutFragment = new CheckoutFragment();
@@ -89,16 +89,15 @@ public class ButtonFragment extends Fragment {
                     });
                     break;
                 case "Cart":
-                    // Update button behavior for Fragment2
                     Log.d("FragmentTag", "Cart");
-                    button1.setText("Browse");
+                    button1.setText(R.string.browse);
                     button1.setOnClickListener(v -> {
                         AppCompatActivity activity = (AppCompatActivity) unwrap(v.getContext());
                         ProductListFragment productListFragment = new ProductListFragment();
                         activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, productListFragment).addToBackStack(null).commit();
                     });
 
-                    button2.setText("Checkout");
+                    button2.setText(R.string.checkout);
                     button2.setOnClickListener(v -> {
                         AppCompatActivity activity = (AppCompatActivity) unwrap(v.getContext());
                         CheckoutFragment checkoutFragment = new CheckoutFragment();
@@ -106,16 +105,15 @@ public class ButtonFragment extends Fragment {
                     });
                     break;
                 case "Checkout":
-                    // Update button behavior for Fragment2
                     Log.d("FragmentTag", "Checkout");
-                    button1.setText("Browse");
+                    button1.setText(R.string.browse);
                     button1.setOnClickListener(v -> {
                         AppCompatActivity activity = (AppCompatActivity) unwrap(v.getContext());
                         ProductListFragment productListFragment = new ProductListFragment();
                         activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, productListFragment).addToBackStack(null).commit();
                     });
 
-                    button2.setText("View Cart");
+                    button2.setText(R.string.view_cart);
                     button2.setOnClickListener(v -> {
                         AppCompatActivity activity = (AppCompatActivity) unwrap(v.getContext());
                         CartFragment cartFragment = new CartFragment();
@@ -123,16 +121,15 @@ public class ButtonFragment extends Fragment {
                     });
                     break;
                 case "Product":
-                    // Update button behavior for Fragment2
                     Log.d("FragmentTag", "Product");
-                    button1.setText("Browse");
+                    button1.setText(R.string.browse);
                     button1.setOnClickListener(v -> {
                         AppCompatActivity activity = (AppCompatActivity) unwrap(v.getContext());
                         ProductListFragment productListFragment = new ProductListFragment();
                         activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, productListFragment).addToBackStack(null).commit();
                     });
 
-                    button2.setText("View Cart");
+                    button2.setText(R.string.view_cart);
                     button2.setOnClickListener(v -> {
                         AppCompatActivity activity = (AppCompatActivity) unwrap(v.getContext());
                         CartFragment cartFragment = new CartFragment();

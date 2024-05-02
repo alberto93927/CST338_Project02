@@ -45,18 +45,13 @@ public class CartViewAdapter extends RecyclerView.Adapter<CartViewAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        // Assuming you have a layout file named "list_item_product" for each item
         return new ViewHolder(inflater.inflate(R.layout.cart_list_product, parent, false));
-        //return new ViewHolder(FragmentCartBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
-
     }
 
     @Override
     public int getItemCount() {
         return productList != null ? productList.size() : 0;
     }
-
-
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView mIdView;

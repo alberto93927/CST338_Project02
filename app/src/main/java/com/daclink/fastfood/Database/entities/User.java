@@ -20,7 +20,6 @@ public class User {
         this.password = password;
         this.type = type;
         this.cart = new Cart(0);
-        //Might need to add userID to constructor
     }
 
     public int getId() {
