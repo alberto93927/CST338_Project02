@@ -9,7 +9,7 @@ import java.util.List;
 
 public class UserRepository {
 
-    private userDAO userDAO;
+    private final userDAO userDAO;
 
     private LiveData<List<User>> allUsers;
 
@@ -25,9 +25,7 @@ public class UserRepository {
 
     public void addUser(User... user) {
         FoodDatabase.databaseWriterExecutor.execute(()->
-                {
-                    userDAO.insertUser(user);
-                }
+                userDAO.insertUser(user)
         );
     }
 
@@ -37,9 +35,15 @@ public class UserRepository {
     }
 
     public void deleteUser(User user) {
-        FoodDatabase.databaseWriterExecutor.execute(() -> {
-            userDAO.deleteUser(user);
-        });
+        FoodDatabase.databaseWriterExecutor.execute(() -> userDAO.deleteUser(user));
+    }
+
+    public void addToCart(Product product) {
+
+    }
+
+    public void addToCart(Product product, int quantity) {
+
     }
 
     public LiveData<List<User>> findUserByID(String userId) {

@@ -49,6 +49,12 @@
         android:layout_marginBottom="4dp" />
 
     <Button
+        android:id="@+id/view_details_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/view_details"/>
+
+    <Button
         android:id="@+id/add_to_cart_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

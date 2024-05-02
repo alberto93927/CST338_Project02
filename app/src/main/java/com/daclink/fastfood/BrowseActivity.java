@@ -4,9 +4,6 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.daclink.fastfood.ProductListFragment;
-import com.daclink.fastfood.R;
-
 public class BrowseActivity extends AppCompatActivity {
 
     @Override
@@ -23,11 +20,15 @@ public class BrowseActivity extends AppCompatActivity {
 
             // Create a new instance of RecyclerViewFragment
             ProductListFragment productListFragment = new ProductListFragment();
+            ButtonFragment buttonFragment = new ButtonFragment();
 
             // Begin a transaction to replace the fragment container with RecyclerViewFragment
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.add(R.id.fragment_container, productListFragment, "RECYCLER_VIEW_FRAGMENT");
+            fragmentTransaction.add(R.id.button_container, buttonFragment, "BUTTON_FRAGMENT");
             fragmentTransaction.commit();
+
+
         }
     }
 }

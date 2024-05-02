@@ -5,7 +5,6 @@ import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity(tableName = FoodDatabase.orderTable)
 public class Order {

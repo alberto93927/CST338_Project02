@@ -19,7 +19,7 @@ public class User {
         this.name = name;
         this.password = password;
         this.type = type;
-        //Might need to add userID to constructor
+        this.cart = new Cart(0);
     }
 
     public int getId() {
@@ -44,6 +44,10 @@ public class User {
 
     public void setCart(Cart cart) {
         this.cart = cart;
+    }
+
+    public void addToCart(int productID) {
+        this.cart.addProduct(productID);
     }
 
     public String getName() {
@@ -71,9 +75,6 @@ public class User {
     }
 
     public boolean isAdmin() {
-        if(type.equals("admin")) {
-            return true;
-        }
-        return false;
+        return type.equals("admin");
     }
 }

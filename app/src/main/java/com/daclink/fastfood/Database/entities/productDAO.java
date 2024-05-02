@@ -30,4 +30,11 @@ public interface productDAO {
 
     @Query("Select * from " + FoodDatabase.productTable + " WHERE name LIKE :search")
     LiveData<List<Product>> searchProductByName(String search);
+
+    @Query("Select * from " + FoodDatabase.productTable + " WHERE id = :id")
+    List<Product> findProductByID(int id);
+
+    @Query("SELECT * FROM " + FoodDatabase.productTable + " WHERE id IN (:productIds)")
+    LiveData<List<Product>> findProductsByCart(List<Integer> productIds);
 }
+
