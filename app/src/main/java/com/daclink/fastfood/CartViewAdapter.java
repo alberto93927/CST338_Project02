@@ -55,6 +55,8 @@ public class CartViewAdapter extends RecyclerView.Adapter<CartViewAdapter.ViewHo
             if(quantity < product.getQuantity()) {
                 quantity++;
                 holder.quantityView.setText(String.valueOf(quantity));
+                user.getCart().addProduct(product.getId());
+                helper.saveUser(user);
             } else {
                 Context context = v.getContext();
                 Toast.makeText(context, product.getName() + " has no more stock", Toast.LENGTH_SHORT).show();
@@ -66,6 +68,8 @@ public class CartViewAdapter extends RecyclerView.Adapter<CartViewAdapter.ViewHo
             if(quantity > 1) {
                 quantity--;
                 holder.quantityView.setText(String.valueOf(quantity));
+                user.getCart().reduceProduct(product.getId());
+                helper.saveUser(user);
             } else {
                 //cart returns when returning to activity, need to look into it
                 productList.remove(product);

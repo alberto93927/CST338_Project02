@@ -31,6 +31,16 @@ public class Cart {
         }
     }
 
+    public void reduceProduct(int productID) {
+        if(productIDs.containsKey(productID)) {
+            if(productIDs.get(productID) > 1) {
+                productIDs.put(productID, productIDs.get(productID) - 1);
+            } else {
+                removeProduct(productID);
+            }
+        }
+    }
+
     public int getProductQuantity(int productID) {
         if(productIDs.containsKey(productID)) {
             return productIDs.get(productID);
