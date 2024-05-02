@@ -1,7 +1,11 @@
 package com.daclink.fastfood;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -70,7 +74,9 @@ public class ButtonFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // Handle button1 click
-                Toast.makeText(getActivity(), "Button 1 clicked", Toast.LENGTH_SHORT).show();
+                AppCompatActivity activity = (AppCompatActivity) unwrap(v.getContext());
+                CartFragment cartFragment = new CartFragment();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, cartFragment).addToBackStack(null).commit();
             }
         });
 
@@ -83,5 +89,13 @@ public class ButtonFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private static Activity unwrap(Context context) {
+        while (!(context instanceof Activity) && context instanceof ContextWrapper) {
+            context = ((ContextWrapper) context).getBaseContext();
+        }
+
+        return (Activity) context;
     }
 }

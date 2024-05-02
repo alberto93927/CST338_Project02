@@ -29,7 +29,7 @@ public class ProductListFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         SharedPreferencesHelper helper = new SharedPreferencesHelper(getContext());
         User user = helper.getUser();
-        productListAdapter = new ProductListAdapter(null, user);
+        productListAdapter = new ProductListAdapter(null, user, helper);
         recyclerView.setAdapter(productListAdapter);
         return rootView;
     }

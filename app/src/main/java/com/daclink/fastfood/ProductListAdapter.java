@@ -31,9 +31,12 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     private List<Product> productList;
     private User user;
 
-    public ProductListAdapter(List<Product> productList, User user) {
+    private SharedPreferencesHelper helper;
+
+    public ProductListAdapter(List<Product> productList, User user, SharedPreferencesHelper helper) {
         this.productList = productList;
         this.user = user;
+        this.helper = helper;
     }
 
     @NonNull
@@ -48,6 +51,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         Product product = productList.get(position);
         Gson gson = new Gson();
         holder.bind(product);
+
         holder.viewDetailsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,6 +78,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
                 Log.d("added: ", String.valueOf(user.getCart().getProductIDs()));
                 Context context = v.getContext();
                 Toast.makeText(context, product.getName() + " added to cart", Toast.LENGTH_SHORT).show();
+                helper.saveUser(user);
 
                 //Bundle bundle = new Bundle();
 
