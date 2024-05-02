@@ -17,7 +17,7 @@ import com.daclink.fastfood.Database.entities.User;
 import com.daclink.fastfood.Database.entities.UserRepository;
 
 public class ProductListFragment extends Fragment {
-
+    private SharedViewModel sharedViewModel;
     private RecyclerView recyclerView;
     private ProductListAdapter productListAdapter;
     private ProductListViewModel productListViewModel;
@@ -37,6 +37,8 @@ public class ProductListFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+        sharedViewModel.setCurrentFragmentTag("Browse");
         ProductRepository productRepository = new ProductRepository(requireActivity().getApplication());
         UserRepository userRepository = new UserRepository(requireActivity().getApplication());
         ProductListViewModel productListViewModel = new ProductListViewModel(productRepository, userRepository);

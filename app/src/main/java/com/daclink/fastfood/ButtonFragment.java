@@ -7,7 +7,10 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,40 +28,18 @@ public class ButtonFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    Button button1;
+    Button button2;
+    private SharedViewModel sharedViewModel;
 
     public ButtonFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ButtonFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ButtonFragment newInstance(String param1, String param2) {
-        ButtonFragment fragment = new ButtonFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
     }
 
     @Override
@@ -66,8 +47,8 @@ public class ButtonFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_button, container, false);
 
-        Button button1 = view.findViewById(R.id.cart_button);
-        Button button2 = view.findViewById(R.id.checkout_button);
+        button1 = view.findViewById(R.id.cart_button);
+        button2 = view.findViewById(R.id.checkout_button);
 
         // Set onClick listeners for each button
         button1.setOnClickListener(new View.OnClickListener() {
@@ -84,10 +65,12 @@ public class ButtonFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // Handle button2 click
-                Toast.makeText(getActivity(), "Button 2 clicked", Toast.LENGTH_SHORT).show();
+                AppCompatActivity activity = (AppCompatActivity) unwrap(v.getContext());
+                CheckoutFragment checkoutFragment = new CheckoutFragment();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, checkoutFragment).addToBackStack(null).commit();
             }
         });
-
+        observeCurrentFragment();
         return view;
     }
 
@@ -97,5 +80,81 @@ public class ButtonFragment extends Fragment {
         }
 
         return (Activity) context;
+    }
+
+    // Observe changes in the current fragment
+    private void observeCurrentFragment() {
+        sharedViewModel.getCurrentFragmentTag().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String tag) {
+                // Update button behavior in the second container based on the current fragment
+                if (tag.equals("Browse")) {
+                    Log.d("FragmentTag", "Browse");
+                    button1.setText("View Cart");
+                    button1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AppCompatActivity activity = (AppCompatActivity) unwrap(v.getContext());
+                            CartFragment cartFragment = new CartFragment();
+                            activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, cartFragment).addToBackStack(null).commit();
+                        }
+                    });
+
+                    button2.setText("Checkout");
+                    button2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AppCompatActivity activity = (AppCompatActivity) unwrap(v.getContext());
+                            CheckoutFragment checkoutFragment = new CheckoutFragment();
+                            activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, checkoutFragment).addToBackStack(null).commit();
+                        }
+                    });
+                } else if (tag.equals("Cart")) {
+                    // Update button behavior for Fragment2
+                    Log.d("FragmentTag", "Cart");
+                    button1.setText("Browse");
+                    button1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AppCompatActivity activity = (AppCompatActivity) unwrap(v.getContext());
+                            ProductListFragment productListFragment = new ProductListFragment();
+                            activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, productListFragment).addToBackStack(null).commit();
+                        }
+                    });
+
+                    button2.setText("Checkout");
+                    button2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AppCompatActivity activity = (AppCompatActivity) unwrap(v.getContext());
+                            CheckoutFragment checkoutFragment = new CheckoutFragment();
+                            activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, checkoutFragment).addToBackStack(null).commit();
+                        }
+                    });
+                } else if (tag.equals("Checkout")) {
+                    // Update button behavior for Fragment2
+                    Log.d("FragmentTag", "Cart");
+                    button1.setText("Browse");
+                    button1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AppCompatActivity activity = (AppCompatActivity) unwrap(v.getContext());
+                            ProductListFragment productListFragment = new ProductListFragment();
+                            activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, productListFragment).addToBackStack(null).commit();
+                        }
+                    });
+
+                    button2.setText("View Cart");
+                    button2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AppCompatActivity activity = (AppCompatActivity) unwrap(v.getContext());
+                            CartFragment cartFragment = new CartFragment();
+                            activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, cartFragment).addToBackStack(null).commit();
+                        }
+                    });
+                }
+            }
+        });
     }
 }

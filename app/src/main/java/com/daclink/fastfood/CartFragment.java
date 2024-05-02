@@ -24,6 +24,7 @@ public class CartFragment extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
+    private SharedViewModel sharedViewModel;
     private CartViewModel viewModel;
     Cart cart;
     User user;
@@ -56,6 +57,8 @@ public class CartFragment extends Fragment {
         cart = user.getCart();
         viewModel = new ViewModelProvider(this).get(CartViewModel.class);
         viewModel.init(new ProductRepository(requireActivity().getApplication()), user.getCart());
+        sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+        sharedViewModel.setCurrentFragmentTag("Cart");
 
         Log.d("cartcontents", String.valueOf(cart.getProductIDs()));
     }
