@@ -1,26 +1,16 @@
 package com.daclink.fastfood;
 
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.daclink.fastfood.Database.entities.Cart;
 import com.daclink.fastfood.Database.entities.Product;
-import com.daclink.fastfood.Database.entities.ProductRepository;
-import com.daclink.fastfood.placeholder.PlaceholderContent.PlaceholderItem;
-import com.daclink.fastfood.databinding.FragmentCartBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link PlaceholderItem}.
- * TODO: Replace the implementation with code for your data type.
- */
 public class MyProductRecyclerViewAdapter extends RecyclerView.Adapter<MyProductRecyclerViewAdapter.ViewHolder> {
 
     private List<Product> productList = new ArrayList<>();
