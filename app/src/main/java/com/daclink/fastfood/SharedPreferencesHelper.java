@@ -11,8 +11,8 @@ public class SharedPreferencesHelper {
     private static final String PREF_NAME = "MyPreferences";
     private static final String KEY_USER = "user";
 
-    private SharedPreferences sharedPreferences;
-    private Gson gson;
+    private final SharedPreferences sharedPreferences;
+    private final Gson gson;
 
     public SharedPreferencesHelper(Context context) {
         sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);

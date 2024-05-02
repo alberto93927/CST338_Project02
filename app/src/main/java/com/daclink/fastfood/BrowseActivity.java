@@ -4,9 +4,6 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.daclink.fastfood.ProductListFragment;
-import com.daclink.fastfood.R;
-
 public class BrowseActivity extends AppCompatActivity {
 
     @Override

@@ -17,9 +17,7 @@ public class CartViewModel extends ViewModel {
     public void init(ProductRepository repository, Cart userCart) {
         productRepository = repository;
         cart = userCart;
-        productRepository.findProductsByCart(cart).observeForever(products -> {
-            productListLiveData.postValue(products);
-        });
+        productRepository.findProductsByCart(cart).observeForever(products -> productListLiveData.postValue(products));
     }
 
     public LiveData<List<Product>> getProductList() {

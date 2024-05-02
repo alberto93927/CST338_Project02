@@ -75,9 +75,7 @@ public class CartFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         // Observe data changes
-        viewModel.getProductList().observe(getViewLifecycleOwner(), productList -> {
-            adapter.setProducts(productList);
-        });
+        viewModel.getProductList().observe(getViewLifecycleOwner(), productList -> adapter.setProducts(productList));
 
         return view;
     }

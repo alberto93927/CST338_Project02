@@ -1,22 +1,18 @@
 package com.daclink.fastfood;
 
-import android.app.Application;
-
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.daclink.fastfood.Database.entities.Product;
 import com.daclink.fastfood.Database.entities.ProductRepository;
-import com.daclink.fastfood.Database.entities.User;
 import com.daclink.fastfood.Database.entities.UserRepository;
 
 import java.util.List;
 
 public class ProductListViewModel extends ViewModel {
 
-    private ProductRepository productRepository;
-    private UserRepository userRepository;
+    private final ProductRepository productRepository;
+    private final UserRepository userRepository;
     private LiveData<List<Product>> productList;
 
     public ProductListViewModel(ProductRepository productRepository, UserRepository userRepository) {

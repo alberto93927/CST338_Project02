@@ -76,9 +76,6 @@ public class User {
     }
 
     public boolean isAdmin() {
-        if(type.equals("admin")) {
-            return true;
-        }
-        return false;
+        return type.equals("admin");
     }
 }

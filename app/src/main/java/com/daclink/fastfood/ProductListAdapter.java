@@ -14,24 +14,20 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.daclink.fastfood.Database.entities.Product;
 import com.daclink.fastfood.Database.entities.User;
 import com.google.gson.Gson;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.ProductListViewHolder> {
 
     private List<Product> productList;
-    private User user;
+    private final User user;
 
-    private SharedPreferencesHelper helper;
+    private final SharedPreferencesHelper helper;
 
     public ProductListAdapter(List<Product> productList, User user, SharedPreferencesHelper helper) {
         this.productList = productList;
@@ -52,46 +48,28 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         Gson gson = new Gson();
         holder.bind(product);
 
-        holder.viewDetailsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Notify the listener of the button click
-                Log.d("Product", "clucked");
-                Bundle bundle = new Bundle();
-                String productJson = gson.toJson(product);
-                bundle.putString("KEY_PRODUCT", productJson);
+        holder.viewDetailsButton.setOnClickListener(v -> {
+            // Notify the listener of the button click
+            Log.d("Product", "clucked");
+            Bundle bundle = new Bundle();
+            String productJson = gson.toJson(product);
+            bundle.putString("KEY_PRODUCT", productJson);
 
-                AppCompatActivity activity = (AppCompatActivity) unwrap(v.getContext());
-                ProductFragment productFragment = new ProductFragment();
-                productFragment.setArguments(bundle);
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, productFragment).addToBackStack(null).commit();
-            }
+            AppCompatActivity activity = (AppCompatActivity) unwrap(v.getContext());
+            ProductFragment productFragment = new ProductFragment();
+            productFragment.setArguments(bundle);
+            activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, productFragment).addToBackStack(null).commit();
         });
 
-        holder.addToCartButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Notify the listener of the button click
-                Log.d("User", user.getName());
-                Log.d("Product", product.getName());
-                user.addToCart(product.getId());
-                Log.d("added: ", String.valueOf(user.getCart().getProductIDs()));
-                Context context = v.getContext();
-                Toast.makeText(context, product.getName() + " added to cart", Toast.LENGTH_SHORT).show();
-                helper.saveUser(user);
-
-                //Bundle bundle = new Bundle();
-
-                //Bundle bundle = new Bundle();
-               // String productJson = gson.toJson(product);
-                //bundle.putString("KEY_PRODUCT", productJson);
-
-               /* AppCompatActivity activity = (AppCompatActivity) unwrap(v.getContext());
-                ProductFragment productFragment = new ProductFragment();
-                productFragment.setArguments(bundle);
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, productFragment).addToBackStack(null).commit();
-           */
-            }
+        holder.addToCartButton.setOnClickListener(v -> {
+            // Notify the listener of the button click
+            Log.d("User", user.getName());
+            Log.d("Product", product.getName());
+            user.addToCart(product.getId());
+            Log.d("added: ", String.valueOf(user.getCart().getProductIDs()));
+            Context context = v.getContext();
+            Toast.makeText(context, product.getName() + " added to cart", Toast.LENGTH_SHORT).show();
+            helper.saveUser(user);
         });
     }
 
