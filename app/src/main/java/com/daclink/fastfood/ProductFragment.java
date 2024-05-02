@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 
 public class ProductFragment extends Fragment {
 
+    private SharedViewModel sharedViewModel;
     private ProductViewModel mViewModel;
     private TextView nameTextView;
     private TextView descriptionTextView;
@@ -38,12 +39,10 @@ public class ProductFragment extends Fragment {
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-
-
-
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(ProductViewModel.class);
-
+        sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+        sharedViewModel.setCurrentFragmentTag("Product");
         Gson gson = new Gson();
         Product product = gson.fromJson(getArguments().getString("KEY_PRODUCT"), Product.class);
         Log.d("", product.getName());

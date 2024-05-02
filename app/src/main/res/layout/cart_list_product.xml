@@ -1,12 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp">-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:id="@+id/parent_container">
 
     <TextView
         android:id="@+id/text_product_name"
@@ -15,37 +10,47 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="@android:color/black"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"/>
 
     <TextView
         android:id="@+id/text_product_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:layout_below="@id/text_product_name"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"/>
 
+    <!-- Text view for user quantity -->
     <TextView
         android:id="@+id/text_user_quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="14dp"
+        android:layout_toStartOf="@id/plus_button"
+        android:layout_centerVertical="true"/>
 
+    <!-- Plus button -->
     <Button
         android:id="@+id/plus_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/minus"
-        android:layout_alignParentEnd="true"
+        android:text="@string/plus"
+        android:layout_toStartOf="@id/minus_button"
+        android:layout_marginEnd="8dp"
         android:layout_centerVertical="true"/>
 
-    <!-- Second small button aligned to the right -->
+    <!-- Minus button -->
     <Button
         android:id="@+id/minus_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/plus"
-        android:layout_toStartOf="@id/plus_button"
-        android:layout_marginEnd="8dp"
-        android:layout_centerVertical="true"/>
+        android:text="@string/minus"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true" />
 
 </RelativeLayout>
-<!--</LinearLayout>-->

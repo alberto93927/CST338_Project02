@@ -61,7 +61,6 @@ public class CartViewAdapter extends RecyclerView.Adapter<CartViewAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView mIdView;
         public final TextView mContentView;
-
         public final TextView quantityView;
         Button plusButton;
         Button minusButton;

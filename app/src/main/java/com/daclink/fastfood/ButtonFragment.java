@@ -75,7 +75,7 @@ public class ButtonFragment extends Fragment {
     }
 
     // Observe changes in the current fragment
-    // This could probably be implemented in a more modular way but time is a finite resource
+    // This could probably be implemented in a more modular way but time is a finite resourced
     private void observeCurrentFragment() {
         sharedViewModel.getCurrentFragmentTag().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
@@ -126,7 +126,29 @@ public class ButtonFragment extends Fragment {
                     });
                 } else if (tag.equals("Checkout")) {
                     // Update button behavior for Fragment2
-                    Log.d("FragmentTag", "Cart");
+                    Log.d("FragmentTag", "Checkout");
+                    button1.setText("Browse");
+                    button1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AppCompatActivity activity = (AppCompatActivity) unwrap(v.getContext());
+                            ProductListFragment productListFragment = new ProductListFragment();
+                            activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, productListFragment).addToBackStack(null).commit();
+                        }
+                    });
+
+                    button2.setText("View Cart");
+                    button2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AppCompatActivity activity = (AppCompatActivity) unwrap(v.getContext());
+                            CartFragment cartFragment = new CartFragment();
+                            activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, cartFragment).addToBackStack(null).commit();
+                        }
+                    });
+                } else if (tag.equals("Product")) {
+                    // Update button behavior for Fragment2
+                    Log.d("FragmentTag", "Product");
                     button1.setText("Browse");
                     button1.setOnClickListener(new View.OnClickListener() {
                         @Override
