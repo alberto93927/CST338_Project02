@@ -71,7 +71,9 @@ public class CartFragment extends Fragment {
         // Set up RecyclerView
         RecyclerView recyclerView = view.findViewById(R.id.list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new CartViewAdapter(user);
+        SharedPreferencesHelper helper = new SharedPreferencesHelper(getContext());
+
+        adapter = new CartViewAdapter(user, helper);
         recyclerView.setAdapter(adapter);
 
         // Observe data changes

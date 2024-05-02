@@ -20,7 +20,16 @@
         android:textSize="14sp"
         android:layout_below="@id/text_product_name"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="2dp"/>
+
+    <TextView
+        android:id="@+id/text_quantity_remaining"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:layout_below="@id/text_product_description"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="2dp"/>
 
     <!-- Text view for user quantity -->
     <TextView
@@ -31,25 +40,25 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="14dp"
-        android:layout_toStartOf="@id/plus_button"
+        android:layout_toStartOf="@id/minus_button"
         android:layout_centerVertical="true"/>
 
     <!-- Plus button -->
-    <Button
-        android:id="@+id/plus_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/plus"
-        android:layout_toStartOf="@id/minus_button"
-        android:layout_marginEnd="8dp"
-        android:layout_centerVertical="true"/>
-
-    <!-- Minus button -->
     <Button
         android:id="@+id/minus_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/minus"
+        android:layout_toStartOf="@id/plus_button"
+        android:layout_marginEnd="8dp"
+        android:layout_centerVertical="true"/>
+
+    <!-- Minus button -->
+    <Button
+        android:id="@+id/plus_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/plus"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true" />
 
