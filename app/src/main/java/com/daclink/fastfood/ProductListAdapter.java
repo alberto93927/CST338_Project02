@@ -26,7 +26,6 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
     private List<Product> productList;
     private final User user;
-
     private final SharedPreferencesHelper helper;
 
     public ProductListAdapter(List<Product> productList, User user, SharedPreferencesHelper helper) {
@@ -50,7 +49,6 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
         holder.viewDetailsButton.setOnClickListener(v -> {
             // Notify the listener of the button click
-            Log.d("Product", "clucked");
             Bundle bundle = new Bundle();
             String productJson = gson.toJson(product);
             bundle.putString("KEY_PRODUCT", productJson);
@@ -63,13 +61,9 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
         holder.addToCartButton.setOnClickListener(v -> {
             // Notify the listener of the button click
-            Log.d("User", user.getName());
-            Log.d("Product", product.getName());
             Context context = v.getContext();
             if(user.getCart().getProductQuantity(product.getId()) < product.getQuantity()) {
                 user.addToCart(product.getId());
-                Log.d("added: ", String.valueOf(user.getCart().getProductIDs()));
-
                 Toast.makeText(context, product.getName() + " added to cart", Toast.LENGTH_SHORT).show();
                 helper.saveUser(user);
             } else {
@@ -82,7 +76,6 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         while (!(context instanceof Activity) && context instanceof ContextWrapper) {
             context = ((ContextWrapper) context).getBaseContext();
         }
-
         return (Activity) context;
     }
 
@@ -126,6 +119,5 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
             quantityTextView.setText(String.valueOf(product.getQuantity()));
             weightTextView.setText(String.valueOf(product.getWeight()));
         }
-
     }
 }
