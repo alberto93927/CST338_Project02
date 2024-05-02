@@ -17,17 +17,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ButtonFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class ButtonFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
     Button button1;
     Button button2;
     private SharedViewModel sharedViewModel;
@@ -83,6 +75,7 @@ public class ButtonFragment extends Fragment {
     }
 
     // Observe changes in the current fragment
+    // This could probably be implemented in a more modular way but time is a finite resource
     private void observeCurrentFragment() {
         sharedViewModel.getCurrentFragmentTag().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
