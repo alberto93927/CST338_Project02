@@ -30,17 +30,26 @@ public class ProductAdapter extends ListAdapter<Product, ProductAdapter.ProductV
         Product product = getItem(position);
         holder.productNameTextView.setText(product.getName());
         holder.productDescriptionTextView.setText(product.getDescription());
-        // Add more bindings as needed
+//        holder.productPriceTextView.setText(String.valueOf(product.getPrice()));
+//        holder.productQuantityTextView.setText(product.getQuantity());
+//        holder.productWeightTextView.setText(String.valueOf(product.getWeight()));
     }
 
     static class ProductViewHolder extends RecyclerView.ViewHolder {
         private final TextView productNameTextView;
         private final TextView productDescriptionTextView;
+        //private final TextView productPriceTextView;
+        //private final TextView productQuantityTextView;
+        //private final TextView productWeightTextView;
+
 
         public ProductViewHolder(View itemView) {
             super(itemView);
             productNameTextView = itemView.findViewById(R.id.product_name);
             productDescriptionTextView = itemView.findViewById(R.id.product_description);
+            //productPriceTextView = itemView.findViewById(R.id.product_price);
+            //productQuantityTextView = itemView.findViewById(R.id.product_quantity);
+            //productWeightTextView = itemView.findViewById(R.id.product_weight);
         }
     }
 

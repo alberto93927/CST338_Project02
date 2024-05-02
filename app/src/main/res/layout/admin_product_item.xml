@@ -19,4 +19,26 @@
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:text="Product Description" />
+
+    <TextView
+        android:id="@+id/product_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="Product Price" />
+
+    <TextView
+        android:id="@+id/product_quantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="Product Quantity" />
+
+    <TextView
+        android:id="@+id/product_weight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="Product Weight" />
+
 </LinearLayout>
