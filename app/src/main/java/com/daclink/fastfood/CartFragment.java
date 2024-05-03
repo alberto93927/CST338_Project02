@@ -54,7 +54,7 @@ public class CartFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferencesHelper helper = new SharedPreferencesHelper(getContext());
+        helper = new SharedPreferencesHelper(getContext());
         user = helper.getUser();
         viewModel = new ViewModelProvider(this).get(CartViewModel.class);
         viewModel.init(new ProductRepository(requireActivity().getApplication()), user.getCart());
