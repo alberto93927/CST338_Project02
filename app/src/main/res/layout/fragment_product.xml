@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ProductFragment">
 
     <TextView
@@ -47,6 +48,6 @@
         android:text="Product Weight"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        android:layout_below="@id/product_quantity"/>
+        android:layout_below="@id/product_weight"/>
 
-</FrameLayout>
+</LinearLayout>

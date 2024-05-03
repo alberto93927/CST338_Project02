@@ -34,19 +34,27 @@ public class ProductFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_product, container, false);
+        Gson gson = new Gson();
+        Product product = gson.fromJson(getArguments().getString("KEY_PRODUCT"), Product.class);
+        View view = inflater.inflate(R.layout.fragment_product, container, false);
+        nameTextView = view.findViewById(R.id.product_name);
+        descriptionTextView = view.findViewById(R.id.product_description);
+        priceTextView = view.findViewById(R.id.product_price);
+        quantityTextView = view.findViewById(R.id.product_quantity);
+        weightTextView = view.findViewById(R.id.product_weight);
+        nameTextView.setText("Product: " + product.getName());
+        descriptionTextView.setText(product.getDescription());
+        priceTextView.setText(String.valueOf("Price: $" + product.getPrice()));
+        quantityTextView.setText(String.valueOf("Stock: " + product.getQuantity()));
+        weightTextView.setText(String.valueOf("Weight: " + product.getWeight() + " lbs"));
+        return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ProductViewModel.class);
         sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
         sharedViewModel.setCurrentFragmentTag("Product");
-        Gson gson = new Gson();
-        Product product = gson.fromJson(getArguments().getString("KEY_PRODUCT"), Product.class);
-        Log.d("", product.getName());
-        // TODO: Use the ViewModel
     }
 
 }
