@@ -35,6 +35,7 @@ public class CheckoutAdapter extends RecyclerView.Adapter<CheckoutAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position) {
         Product product = productList.get(position);
         holder.quantityView.setText("Quantity: " +cartContents.get(product.getId()));
+        holder.priceView.setText("$" + product.getPrice());
         holder.bindData(product);
 
     }
@@ -48,11 +49,13 @@ public class CheckoutAdapter extends RecyclerView.Adapter<CheckoutAdapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private TextView textView;
         private TextView quantityView;
+        private TextView priceView;
 
         public ViewHolder(View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.text_view);
             quantityView = itemView.findViewById(R.id.text_user_quantity);
+            priceView = itemView.findViewById(R.id.text_price);
         }
 
         public void bindData(Product product) {
