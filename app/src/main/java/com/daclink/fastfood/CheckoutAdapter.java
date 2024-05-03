@@ -1,5 +1,6 @@
 package com.daclink.fastfood;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +34,9 @@ public class CheckoutAdapter extends RecyclerView.Adapter<CheckoutAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Product product = productList.get(position);
+        holder.quantityView.setText("Quantity: " +cartContents.get(product.getId()));
         holder.bindData(product);
+
     }
 
     @Override
@@ -44,10 +47,12 @@ public class CheckoutAdapter extends RecyclerView.Adapter<CheckoutAdapter.ViewHo
     // ViewHolder class
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private TextView textView;
+        private TextView quantityView;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.text_view); // Replace with your view ID
+            textView = itemView.findViewById(R.id.text_view);
+            quantityView = itemView.findViewById(R.id.text_user_quantity);
         }
 
         public void bindData(Product product) {
