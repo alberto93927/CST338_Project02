@@ -67,7 +67,7 @@ public class AdminActivity extends AppCompatActivity {
                     Double.parseDouble(productWeight.getText().toString())
             );
             adminProductListViewModel.insert(newProduct);
-            dialog.dismiss(); // Close dialog after adding product
+            dialog.dismiss();
         });
 
         dialog.show();
@@ -82,5 +82,41 @@ public class AdminActivity extends AppCompatActivity {
                 .setNegativeButton("Cancel", null)
                 .show();
     }
+
+    public void openUpdateProductDialog(Product product) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View dialogView = getLayoutInflater().inflate(R.layout.admin_dialog_add_product, null);
+        builder.setView(dialogView);
+
+        EditText productName = dialogView.findViewById(R.id.editTextProductName);
+        EditText productDescription = dialogView.findViewById(R.id.editTextProductDescription);
+        EditText productPrice = dialogView.findViewById(R.id.editTextProductPrice);
+        EditText productQuantity = dialogView.findViewById(R.id.editTextProductQuantity);
+        EditText productWeight = dialogView.findViewById(R.id.editTextProductWeight);
+        Button AddProductButton = dialogView.findViewById(R.id.buttonAddProduct);
+
+        productName.setText(product.getName());
+        productDescription.setText(product.getDescription());
+        productPrice.setText(String.valueOf(product.getPrice()));
+        productQuantity.setText(String.valueOf(product.getQuantity()));
+        productWeight.setText(String.valueOf(product.getWeight()));
+
+        AddProductButton.setVisibility(View.INVISIBLE);
+
+        builder.setPositiveButton("Update", (dialog, which) -> {
+            product.setName(productName.getText().toString());
+            product.setDescription(productDescription.getText().toString());
+            product.setPrice(Double.parseDouble(productPrice.getText().toString()));
+            product.setQuantity(Integer.parseInt(productQuantity.getText().toString()));
+            product.setWeight(Double.parseDouble(productWeight.getText().toString()));
+
+            adminProductListViewModel.update(product);
+        });
+        builder.setNegativeButton("Cancel", null);
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
 
 }
