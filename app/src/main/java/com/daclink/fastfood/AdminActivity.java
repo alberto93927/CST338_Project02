@@ -32,7 +32,7 @@ public class AdminActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = binding.recyclerView;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ProductAdapter(new ProductAdapter.ProductDiff());
+        adapter = new ProductAdapter(this, new ProductAdapter.ProductDiff());
         recyclerView.setAdapter(adapter);
 
         adminProductListViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(AdminProductListViewModel.class);
@@ -41,6 +41,7 @@ public class AdminActivity extends AppCompatActivity {
         });
 
         binding.AddProductButton.setOnClickListener(v -> openAddProductDialog());
+
 
     }
 
@@ -72,4 +73,14 @@ public class AdminActivity extends AppCompatActivity {
         dialog.show();
 
     }
+
+    public void confirmRemoveProduct(Product product){
+        new android.app.AlertDialog.Builder(this)
+                .setTitle("Confirm Removal")
+                .setMessage("Are you sure you want to remove this product?")
+                .setPositiveButton("Remove", ((dialog, which) -> adminProductListViewModel.delete(product)))
+                .setNegativeButton("Cancel", null)
+                .show();
+    }
+
 }
