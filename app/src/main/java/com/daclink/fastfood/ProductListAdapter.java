@@ -66,6 +66,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
                 user.addToCart(product.getId());
                 Toast.makeText(context, product.getName() + " added to cart", Toast.LENGTH_SHORT).show();
                 helper.saveUser(user);
+                helper.addToProductList(product);
             } else {
                 Toast.makeText(context, product.getName() + " has no more stock", Toast.LENGTH_SHORT).show();
             }

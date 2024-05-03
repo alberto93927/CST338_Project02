@@ -34,6 +34,7 @@ public class CartViewAdapter extends RecyclerView.Adapter<CartViewAdapter.ViewHo
 
     public void setProducts(List<Product> productList) {
         this.productList = productList;
+        helper.saveProductList(productList);
         notifyDataSetChanged();
     }
 
