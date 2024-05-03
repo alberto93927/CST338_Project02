@@ -93,10 +93,8 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     class ProductListViewHolder extends RecyclerView.ViewHolder {
 
         private TextView nameTextView;
-        private TextView descriptionTextView;
         private TextView priceTextView;
         private TextView quantityTextView;
-        private TextView weightTextView;
 
         Button addToCartButton;
         Button viewDetailsButton;
@@ -104,10 +102,8 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         public ProductListViewHolder(@NonNull View itemView) {
             super(itemView);
             nameTextView = itemView.findViewById(R.id.text_view_name);
-            descriptionTextView = itemView.findViewById(R.id.text_view_description);
             priceTextView = itemView.findViewById(R.id.text_view_price);
             quantityTextView = itemView.findViewById(R.id.text_view_quantity);
-            weightTextView = itemView.findViewById(R.id.text_view_weight);
             viewDetailsButton = itemView.findViewById(R.id.view_details_button);
             addToCartButton = itemView.findViewById(R.id.add_to_cart_button);
         }
@@ -115,10 +111,8 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         public void bind(Product product) {
             //temp
             nameTextView.setText(product.getName());
-            descriptionTextView.setText(product.getDescription());
-            priceTextView.setText(String.valueOf(product.getPrice()));
-            quantityTextView.setText(String.valueOf(product.getQuantity()));
-            weightTextView.setText(String.valueOf(product.getWeight()));
+            priceTextView.setText("$" + String.valueOf(product.getPrice()));
+            quantityTextView.setText("Stock: " + String.valueOf(product.getQuantity()));
         }
     }
 }
