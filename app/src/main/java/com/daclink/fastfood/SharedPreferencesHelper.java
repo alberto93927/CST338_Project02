@@ -69,9 +69,9 @@ public class SharedPreferencesHelper {
     }
 
     public List<Product> getProductList() {
-
-        String productJson = sharedPreferences.getString(KEY_PRODUCT_LIST, null);
-        if(!productJson.isEmpty()) {
+        String productJson = "";
+        productJson = sharedPreferences.getString(KEY_PRODUCT_LIST, "");
+        if(!productJson.equals("")) {
             return gson.fromJson(productJson, listType);
         }
         return null;

@@ -42,9 +42,9 @@ public class ProductFragment extends Fragment {
         priceTextView = view.findViewById(R.id.product_price);
         quantityTextView = view.findViewById(R.id.product_quantity);
         weightTextView = view.findViewById(R.id.product_weight);
-        nameTextView.setText("Product: " + product.getName());
+        nameTextView.setText(product.getName());
         descriptionTextView.setText(product.getDescription());
-        priceTextView.setText(String.valueOf("Price: $" + product.getPrice()));
+        priceTextView.setText("Price: $" + String.format("%.2f", product.getPrice()));
         quantityTextView.setText(String.valueOf("Stock: " + product.getQuantity()));
         weightTextView.setText(String.valueOf("Weight: " + product.getWeight() + " lbs"));
         return view;

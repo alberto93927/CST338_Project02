@@ -61,7 +61,7 @@ public class CheckoutFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         TextView totalView = view.findViewById(R.id.text_total);
-        totalView.setText("Total: $" + String.valueOf(total));
+        totalView.setText("Total: $" + String.format("%.2f", total));
 
         TextView totalQuantityView = view.findViewById(R.id.text_total_quantity);
         totalQuantityView.setText("Total # of items : " + totalQuantity);

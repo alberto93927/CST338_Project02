@@ -111,7 +111,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         public void bind(Product product) {
             //temp
             nameTextView.setText(product.getName());
-            priceTextView.setText("$" + String.valueOf(product.getPrice()));
+            priceTextView.setText("$" + String.format("%.2f", product.getPrice()));
             quantityTextView.setText("Stock: " + String.valueOf(product.getQuantity()));
         }
     }
