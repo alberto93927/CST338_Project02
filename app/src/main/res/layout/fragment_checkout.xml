@@ -17,7 +17,7 @@
             android:layout_weight="1" />
 
         <TextView
-            android:id="@+id/text_total"
+            android:id="@+id/text_total_quantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
@@ -25,7 +25,15 @@
             android:layout_marginTop="2dp" />
 
         <TextView
-            android:id="@+id/text_total_quantity"
+            android:id="@+id/text_subtotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="2dp" />
+
+        <TextView
+            android:id="@+id/text_total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"

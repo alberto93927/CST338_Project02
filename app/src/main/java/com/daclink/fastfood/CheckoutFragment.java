@@ -54,14 +54,15 @@ public class CheckoutFragment extends Fragment {
         List<Product> productList = helper.getProductList();
         Double total = calculateTotal(productList);
         int totalQuantity = getTotalItemCount();
-        Log.d("ProductListSize", String.valueOf(helper.getProductList().size()));
-        Log.d("Total", String.valueOf(total));
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 
+        TextView subTotalView = view.findViewById(R.id.text_subtotal);
+        subTotalView.setText("Subtotal: $" + String.format("%.2f", total));
+
         TextView totalView = view.findViewById(R.id.text_total);
-        totalView.setText("Total: $" + String.format("%.2f", total));
+        totalView.setText("Total w/ Tax: $" + String.format("%.2f", total * 1.1));
 
         TextView totalQuantityView = view.findViewById(R.id.text_total_quantity);
         totalQuantityView.setText("Total # of items : " + totalQuantity);
