@@ -49,6 +49,7 @@ public class ProductAdapter extends ListAdapter<Product, ProductAdapter.ProductV
         private final TextView productWeightTextView;
 
         private final Button deleteButton;
+        private final Button upDateButton;
         private final ProductAdapter adapter;
 
 
@@ -61,6 +62,7 @@ public class ProductAdapter extends ListAdapter<Product, ProductAdapter.ProductV
             productQuantityTextView = itemView.findViewById(R.id.product_quantity);
             productWeightTextView = itemView.findViewById(R.id.product_weight);
             deleteButton = itemView.findViewById(R.id.AdminRemoveItemButton);
+            upDateButton = itemView.findViewById(R.id.AdminUpdateItemButton);
 
             deleteButton.setOnClickListener(v -> {
                 int position = getAdapterPosition();
@@ -69,6 +71,15 @@ public class ProductAdapter extends ListAdapter<Product, ProductAdapter.ProductV
                     if (itemView.getContext() instanceof AdminActivity) {
                         ((AdminActivity) itemView.getContext()).confirmRemoveProduct(product);
                     }
+                }
+            });
+
+            upDateButton.setOnClickListener(v -> {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    Product productToUpdate = adapter.getItem(position);
+                    ((AdminActivity) itemView.getContext()).openUpdateProductDialog(productToUpdate);
+
                 }
             });
 

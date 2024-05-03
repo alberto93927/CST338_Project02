@@ -16,11 +16,6 @@ public class AdminProductListViewModel extends AndroidViewModel {
     private ProductRepository productRepository;
     private LiveData<List<Product>> productList;
 
-//    public AdminProductListViewModel(ProductRepository repository){
-//        this.productRepository = repository;
-//        productList = productRepository.getAllProducts();
-//    }
-
     public AdminProductListViewModel(Application application){
         super(application);
         productRepository = new ProductRepository(application);
@@ -36,7 +31,7 @@ public class AdminProductListViewModel extends AndroidViewModel {
     }
 
     public void update(Product product){
-        productRepository.delete(product);
+        productRepository.update(product);
     }
 
     public void delete(Product product){
