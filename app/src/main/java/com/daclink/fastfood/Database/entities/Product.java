@@ -69,4 +69,6 @@ public class Product {
     public void setWeight(double weight) {
         this.weight = weight;
     }
+
+
 }

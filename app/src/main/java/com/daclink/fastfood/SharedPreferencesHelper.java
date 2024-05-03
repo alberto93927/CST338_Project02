@@ -2,6 +2,7 @@ package com.daclink.fastfood;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.daclink.fastfood.Database.entities.Product;
 import com.daclink.fastfood.Database.entities.User;
@@ -50,8 +51,21 @@ public class SharedPreferencesHelper {
         } else {
             productList = getProductList();
         }
-        productList.add(product);
-        saveProductList(productList);
+        if(!inProductList(productList, product)) {
+            Log.d("ProductList", "not in list");
+            productList.add(product);
+            saveProductList(productList);
+        }
+    }
+
+    public boolean inProductList(List<Product> productList, Product product) {
+        boolean inList = false;
+        for(Product p : productList) {
+            if(p.getId() == product.getId()) {
+                inList = true;
+            }
+        }
+        return inList;
     }
 
     public List<Product> getProductList() {
