@@ -8,6 +8,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -36,5 +37,8 @@ public interface userDAO {
 
     @Query("UPDATE " + FoodDatabase.userTable + " SET name = :newName, password = :newPassword WHERE name = :currentName")
     void updateUserByUsername(String currentName, String newName, String newPassword);
+
+    @Update
+    void updateUser(User user);
 
 }

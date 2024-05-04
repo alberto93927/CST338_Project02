@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import com.daclink.fastfood.Database.entities.Product;
-import com.daclink.fastfood.R;
 
 public class ProductAdapter extends ListAdapter<Product, ProductAdapter.ProductViewHolder> {
 

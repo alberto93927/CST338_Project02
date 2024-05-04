@@ -44,6 +44,10 @@ public class UserRepository {
         );
     }
 
+    public void updateUser(User user) {
+        FoodDatabase.databaseWriterExecutor.execute(() -> userDAO.updateUser(user));
+    }
+
     public void addToCart(Product product) {
 
     }
