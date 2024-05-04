@@ -38,6 +38,7 @@ public class LandingPage extends AppCompatActivity {
 
         if(isAdmin){
             binding.AdminButton.setVisibility(View.VISIBLE);
+            binding.AccountSettingsButton.setVisibility(View.INVISIBLE);
         }
         else{
             binding.DeleteButton.setVisibility(View.VISIBLE);
@@ -63,14 +64,14 @@ public class LandingPage extends AppCompatActivity {
             }
         });
 
-        binding.ShoppingButton.setOnClickListener(new View.OnClickListener() {
+        binding.AccountSettingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = IntentFactory.newShoppingCartActivityIntent(LandingPage.this);
+                Intent intent = IntentFactory.newAccountSettingsActivityIntent(LandingPage.this);
                 startActivity(intent);
-                finish();
             }
         });
+
 
         binding.DeleteButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -38,6 +38,12 @@ public class UserRepository {
         FoodDatabase.databaseWriterExecutor.execute(() -> userDAO.deleteUser(user));
     }
 
+    public void updateUserByUsername(String currentName, String newName, String newPassword) {
+        FoodDatabase.databaseWriterExecutor.execute(() ->
+                userDAO.updateUserByUsername(currentName, newName, newPassword)
+        );
+    }
+
     public void addToCart(Product product) {
 
     }

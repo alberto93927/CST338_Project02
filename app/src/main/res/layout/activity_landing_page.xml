@@ -33,18 +33,6 @@
 
         />
 
-    <Button
-        android:id="@+id/ShoppingButton"
-        android:layout_width="250dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/shop"
-        android:textSize="36sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/BrowseButton"
-
-        />
 
     <Button
         android:id="@+id/ViewCartHistoryButton"
@@ -55,7 +43,7 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ShoppingButton"
+        app:layout_constraintTop_toBottomOf="@id/BrowseButton"
 
         />
 

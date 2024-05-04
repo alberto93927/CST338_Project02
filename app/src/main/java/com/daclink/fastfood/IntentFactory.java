@@ -46,4 +46,8 @@ public class IntentFactory {
     public static Intent newAdminActivityIntent(Context context){
         return new Intent(context, AdminActivity.class);
     }
+
+    public static Intent newAccountSettingsActivityIntent(Context context){
+        return new Intent(context, AccountSettingsActivity.class);
+    }
 }

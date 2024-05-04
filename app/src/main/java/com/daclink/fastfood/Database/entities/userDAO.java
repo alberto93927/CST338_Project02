@@ -34,4 +34,7 @@ public interface userDAO {
     @Query("Select * from " + FoodDatabase.userTable + " WHERE name = :name AND password = :password")
     LiveData<List<User>> findUserByCredentials(String name, String password);
 
+    @Query("UPDATE " + FoodDatabase.userTable + " SET name = :newName, password = :newPassword WHERE name = :currentName")
+    void updateUserByUsername(String currentName, String newName, String newPassword);
+
 }
