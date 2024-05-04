@@ -89,8 +89,11 @@ public class CheckoutFragment extends Fragment {
 
     public Double calculateTotal(List<Product> productList) {
         double total = 0;
-        HashMap<Integer, Integer> cartItems = user.getCart().getProductIDs();
-
+        HashMap<Integer,Integer> cartItems = new HashMap<>();
+        cartItems.putAll(user.getCart().getProductIDs());
+        if(cartItems == null) {
+            return 0.0;
+        }
         for(Product product : productList) {
             Log.d("product", product.getName());
             if(cartItems.containsKey(product.getId())) {

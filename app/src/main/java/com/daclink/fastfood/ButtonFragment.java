@@ -22,10 +22,6 @@ public class ButtonFragment extends Fragment {
     Button button2;
     private SharedViewModel sharedViewModel;
 
-    public ButtonFragment() {
-        // Required empty public constructor
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,14 +38,12 @@ public class ButtonFragment extends Fragment {
 
         // Set onClick listeners for each button
         button1.setOnClickListener(v -> {
-            // Handle button1 click
             AppCompatActivity activity = (AppCompatActivity) unwrap(v.getContext());
             CartFragment cartFragment = new CartFragment();
             activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, cartFragment).addToBackStack(null).commit();
         });
 
         button2.setOnClickListener(v -> {
-            // Handle button2 click
             AppCompatActivity activity = (AppCompatActivity) unwrap(v.getContext());
             CheckoutFragment checkoutFragment = new CheckoutFragment();
             activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, checkoutFragment).addToBackStack(null).commit();
