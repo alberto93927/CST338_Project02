@@ -13,6 +13,9 @@
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".AdminManageUsersActivity"
+            android:exported="false" />
+        <activity
             android:name=".AccountSettingsActivity"
             android:exported="false"
             android:parentActivityName=".LandingPage" />
