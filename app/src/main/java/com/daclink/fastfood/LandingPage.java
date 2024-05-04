@@ -38,9 +38,14 @@ public class LandingPage extends AppCompatActivity {
 
         if(isAdmin){
             binding.AdminButton.setVisibility(View.VISIBLE);
+            binding.AdminManageUsersButton.setVisibility(View.VISIBLE);
             binding.AccountSettingsButton.setVisibility(View.INVISIBLE);
+            binding.DeleteButton.setVisibility(View.INVISIBLE);
         }
         else{
+            binding.AdminButton.setVisibility(View.INVISIBLE);
+            binding.AdminManageUsersButton.setVisibility(View.INVISIBLE);
+            binding.AccountSettingsButton.setVisibility(View.VISIBLE);
             binding.DeleteButton.setVisibility(View.VISIBLE);
         }
 

@@ -48,19 +48,6 @@
         />
 
     <Button
-        android:id="@+id/AccountSettingsButton"
-        android:layout_width="250dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/settings"
-        android:textSize="36sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ViewCartHistoryButton"
-
-        />
-
-    <Button
         android:id="@+id/LogoutButton"
         android:layout_width="250dp"
         android:layout_height="75dp"
@@ -69,21 +56,54 @@
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/AccountSettingsButton"
+        app:layout_constraintTop_toBottomOf="@id/ViewCartHistoryButton"
 
         />
+
+    <Button
+        android:id="@+id/AccountSettingsButton"
+        android:layout_width="250dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/settings"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/LogoutButton"
+        tools:visibility="invisible"
+
+        />
+
 
     <Button
         android:id="@+id/AdminButton"
         android:layout_width="250dp"
         android:layout_height="75dp"
         android:layout_marginTop="16dp"
-        android:text="@string/admin"
-        android:textSize="36sp"
+        android:backgroundTint="#0B25B5"
+        android:textColor="@color/white"
+        android:text="Manage Stock"
+        android:textSize="29sp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/LogoutButton"
+        tools:visibility="visible"
+
+        />
+
+    <Button
+        android:id="@+id/AdminManageUsersButton"
+        android:layout_width="250dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#2FFF00"
+        android:text="Manage Users"
+        android:textSize="30sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/AdminButton"
         tools:visibility="visible"
 
         />
@@ -99,8 +119,8 @@
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/LogoutButton"
-        tools:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@id/AccountSettingsButton"
+        tools:visibility="invisible"
 
         />
 
