@@ -18,4 +18,12 @@ public class OrderRepository {
     public LiveData<List<Order>> searchOrderByID(int id) {
         return orderDAO.searchOrderByID(id);
     }
+
+    public LiveData<List<Order>> getAllOrders() {
+        return orderDAO.getAllOrders();
+    }
+
+    public LiveData<List<Order>> getOrderByUserID(int userID) {
+        return orderDAO.searchOrderByUserID(userID);
+    }
 }

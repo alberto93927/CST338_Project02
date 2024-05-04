@@ -14,16 +14,21 @@ public class Order {
 
     private int userID;
 
+    private double total;
+    private double totalItems;
+
     @TypeConverters({Converters.class})
     private Cart products;
 
     @TypeConverters({Converters.class})
     private LocalDateTime date;
 
-    public Order(int userID, Cart products, LocalDateTime date) {
+    public Order(int userID, Cart products, LocalDateTime date, double total, double totalItems) {
         this.userID = userID;
         this.products = products;
         this.date = date;
+        this.total = total;
+        this.totalItems = totalItems;
     }
 
     public Cart getProducts() {
