@@ -1,7 +1,11 @@
 package com.daclink.fastfood;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.daclink.fastfood.Database.entities.Product;
@@ -67,6 +72,15 @@ public class CheckoutFragment extends Fragment {
         TextView totalQuantityView = view.findViewById(R.id.text_total_quantity);
         totalQuantityView.setText("Total # of items : " + totalQuantity);
 
+        Button checkoutButton = view.findViewById(R.id.button_checkout);
+        checkoutButton.setOnClickListener(v -> {
+            // Handle button1 click
+            AppCompatActivity activity = (AppCompatActivity) unwrap(v.getContext());
+            ConfirmationFragment confirmationFragment = new ConfirmationFragment();
+            activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, confirmationFragment).addToBackStack(null).commit();
+        });
+
+
         CheckoutAdapter adapter = new CheckoutAdapter(productList, user.getCart().getProductIDs());
         recyclerView.setAdapter(adapter);
 
@@ -75,8 +89,11 @@ public class CheckoutFragment extends Fragment {
 
     public Double calculateTotal(List<Product> productList) {
         double total = 0;
-        HashMap<Integer, Integer> cartItems = user.getCart().getProductIDs();
-
+        HashMap<Integer,Integer> cartItems = new HashMap<>();
+        cartItems.putAll(user.getCart().getProductIDs());
+        if(cartItems == null) {
+            return 0.0;
+        }
         for(Product product : productList) {
             Log.d("product", product.getName());
             if(cartItems.containsKey(product.getId())) {
@@ -92,6 +109,14 @@ public class CheckoutFragment extends Fragment {
             totalQuantity += quantity;
         }
         return totalQuantity;
+    }
+
+    private static Activity unwrap(Context context) {
+        while (!(context instanceof Activity) && context instanceof ContextWrapper) {
+            context = ((ContextWrapper) context).getBaseContext();
+        }
+
+        return (Activity) context;
     }
 }
 
