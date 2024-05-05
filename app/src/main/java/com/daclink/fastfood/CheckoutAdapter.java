@@ -35,7 +35,7 @@ public class CheckoutAdapter extends RecyclerView.Adapter<CheckoutAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position) {
         Product product = productList.get(position);
         holder.quantityView.setText("Quantity: " +cartContents.get(product.getId()));
-        holder.priceView.setText("$" + product.getPrice());
+        holder.priceView.setText("$" + String.format("%.2f", product.getPrice()));
         holder.bindData(product);
 
     }

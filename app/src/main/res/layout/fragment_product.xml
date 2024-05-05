@@ -11,8 +11,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Product Name"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"/>
+        android:textSize="24dp"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp" />
 
     <TextView
         android:id="@+id/product_description"
@@ -20,6 +22,7 @@
         android:layout_height="wrap_content"
         android:text="Product Description"
         android:layout_marginTop="16dp"
+        android:textSize="20dp"
         android:layout_marginStart="16dp"
         android:layout_below="@id/product_name"/>
 
@@ -28,6 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Product Price"
+        android:textSize="20dp"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         android:layout_below="@id/product_description"/>
@@ -38,6 +42,7 @@
         android:layout_height="wrap_content"
         android:text="Product Quantity"
         android:layout_marginTop="16dp"
+        android:textSize="20dp"
         android:layout_marginStart="16dp"
         android:layout_below="@id/product_price"/>
 
@@ -47,6 +52,7 @@
         android:layout_height="wrap_content"
         android:text="Product Weight"
         android:layout_marginTop="16dp"
+        android:textSize="20dp"
         android:layout_marginStart="16dp"
         android:layout_below="@id/product_weight"/>
 
