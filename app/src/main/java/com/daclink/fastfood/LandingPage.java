@@ -84,6 +84,14 @@ public class LandingPage extends AppCompatActivity {
             }
         });
 
+        binding.AdminManageUsersButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = IntentFactory.newAdminManageUsersActivityIntent(LandingPage.this);
+                startActivity(intent);
+            }
+        });
+
 
         binding.DeleteButton.setOnClickListener(new View.OnClickListener() {
             @Override

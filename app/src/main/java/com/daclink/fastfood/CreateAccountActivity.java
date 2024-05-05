@@ -22,8 +22,8 @@ import java.util.List;
 
 public class CreateAccountActivity extends AppCompatActivity {
 
-    private ActivityCreateAccountBinding binding;
-    private CreateAccountViewModel createAccountViewModel;
+     ActivityCreateAccountBinding binding;
+     CreateAccountViewModel createAccountViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
