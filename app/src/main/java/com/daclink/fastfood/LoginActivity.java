@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -56,8 +57,10 @@ public class LoginActivity extends AppCompatActivity {
                     helper.saveUser(user);
                     startActivity(intent);
                     finish();
-                } else {
+                }
+                else {
                     // User not found or list empty
+                    Toast.makeText(LoginActivity.this, "Error: Please check credentials.", Toast.LENGTH_SHORT).show();
                     Log.d("UserData", "User not found");
                 }
             }
