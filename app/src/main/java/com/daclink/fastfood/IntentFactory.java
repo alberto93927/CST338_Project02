@@ -17,6 +17,10 @@ public class IntentFactory {
         return new Intent(context, LandingPage.class);
     }
 
+    public static Intent newOrderHistoryIntent(Context context){
+        return new Intent(context, OrderHistoryActivity.class);
+    }
+
     public static Intent newLandingPageIntent(Context context, String username){
         Intent intent = new Intent(context, LandingPage.class);
         intent.putExtra("USERNAME_KEY", username);

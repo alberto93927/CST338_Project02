@@ -18,7 +18,6 @@ public class ProductListViewModel extends ViewModel {
     public ProductListViewModel(ProductRepository productRepository, UserRepository userRepository) {
         this.productRepository = productRepository;
         this.userRepository = userRepository;
-
     }
 
     public LiveData<List<Product>> getProductList() {

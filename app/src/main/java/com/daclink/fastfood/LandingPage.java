@@ -60,12 +60,19 @@ public class LandingPage extends AppCompatActivity {
             }
         });
 
+        binding.ViewCartHistoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = IntentFactory.newOrderHistoryIntent(LandingPage.this);
+                startActivity(intent);
+            }
+        });
+
         binding.BrowseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = IntentFactory.newBrowseActivityIntent(LandingPage.this);
                 startActivity(intent);
-                //finish();
             }
         });
 

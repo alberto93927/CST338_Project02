@@ -26,7 +26,7 @@ public class ConfirmationFragment extends Fragment {
         super.onCreate(savedInstanceState);
         helper = new SharedPreferencesHelper(getContext());
         user = helper.getUser();
-        order = new Order(user.getId(), user.getCart(), LocalDateTime.now());
+        order = new Order(user.getId(), user.getCart(), LocalDateTime.now(), 5, 5);
         sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
         sharedViewModel.setCurrentFragmentTag("Confirmation");
     }

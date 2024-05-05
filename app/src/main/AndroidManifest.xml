@@ -38,6 +38,10 @@
             android:name=".ShoppingCartActivity"
             android:exported="false" />
         <activity
+            android:name=".OrderHistoryActivity"
+            android:exported="false"
+            android:parentActivityName=".LoginActivity" />
+        <activity
             android:name=".LandingPage"
             android:exported="false"
             android:parentActivityName=".LoginActivity" />

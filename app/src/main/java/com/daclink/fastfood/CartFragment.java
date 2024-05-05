@@ -27,9 +27,9 @@ public class CartFragment extends Fragment {
     private SharedViewModel sharedViewModel;
     private CartViewModel viewModel;
 
-    SharedPreferencesHelper helper;
-    Cart cart;
-    User user;
+    private SharedPreferencesHelper helper;
+    private Cart cart;
+    private User user;
 
     private CartViewAdapter adapter;
 

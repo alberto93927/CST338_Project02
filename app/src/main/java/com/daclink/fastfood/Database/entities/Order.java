@@ -62,4 +62,20 @@ public class Order {
     public void setDate(LocalDateTime date) {
         this.date = date;
     }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public double getTotalItems() {
+        return totalItems;
+    }
+
+    public void setTotalItems(double totalItems) {
+        this.totalItems = totalItems;
+    }
 }

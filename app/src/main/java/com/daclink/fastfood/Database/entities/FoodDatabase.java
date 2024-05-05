@@ -8,6 +8,8 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -49,6 +51,7 @@ public abstract class FoodDatabase extends RoomDatabase {
                 Executors.newSingleThreadExecutor().execute(() -> {
                     userDAO userDAO = INSTANCE.foodDAO();
                     productDAO productDAO = INSTANCE.productDAO();
+                    orderDAO orderDAO = INSTANCE.orderDAO();
                     userDAO.deleteAll();
                     userDAO.insertUser(new User("admin2", "admin2", "admin"));
                     userDAO.insertUser(new User("testUser1", "testUser1", "user"));
@@ -58,6 +61,12 @@ public abstract class FoodDatabase extends RoomDatabase {
                     productDAO.insertProduct(new Product("Cheese", "Cheesy", 3.5, 20, .5));
                     productDAO.insertProduct(new Product("Mountain Dew", "Baja Blast", 2.5, 25, 2));
                     productDAO.insertProduct(new Product("Potstickers", "Pork", 8.5, 14, 3));
+                    HashMap<Integer, Integer> productIDs = new HashMap<>();
+                    productIDs.put(1, 3);
+                    productIDs.put(2, 5);
+                    productIDs.put(5, 4);
+                    Cart cart = new Cart(1, productIDs);
+                    orderDAO.insertOrder(new Order(1, cart, LocalDateTime.now(), 150, 12));
                 });
             });
         }
