@@ -36,8 +36,5 @@ public class OrderHistoryActivity extends AppCompatActivity {
             // Update the adapter with new data
             adapter.setData(items);
         });
-
-        // Fetch data (e.g., from a repository or API) and update the ViewModel
-        // viewModel.updateItems(newItems);
     }
 }

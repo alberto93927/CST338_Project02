@@ -16,40 +16,13 @@ import com.daclink.fastfood.Database.entities.Cart;
 import com.daclink.fastfood.Database.entities.ProductRepository;
 import com.daclink.fastfood.Database.entities.User;
 
-
-/**
- * A fragment representing a list of Items.
- */
 public class CartFragment extends Fragment {
 
-    // TODO: Customize parameter argument names
-    private static final String ARG_COLUMN_COUNT = "column-count";
     private SharedViewModel sharedViewModel;
     private CartViewModel viewModel;
-
     private SharedPreferencesHelper helper;
-    private Cart cart;
     private User user;
-
     private CartViewAdapter adapter;
-
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
-    public CartFragment() {
-    }
-
-    // TODO: Customize parameter initialization
-    @SuppressWarnings("unused")
-    public static CartFragment newInstance(int columnCount) {
-        CartFragment fragment = new CartFragment();
-
-        Bundle args = new Bundle();
-        args.putInt(ARG_COLUMN_COUNT, columnCount);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,6 +51,4 @@ public class CartFragment extends Fragment {
 
         return view;
     }
-
-
 }

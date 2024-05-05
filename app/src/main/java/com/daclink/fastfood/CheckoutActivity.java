@@ -27,6 +27,5 @@ public class CheckoutActivity extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 }

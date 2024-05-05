@@ -46,6 +46,10 @@ public class User {
         this.cart = cart;
     }
 
+    public void clearCart() {
+        this.cart = new Cart(1);
+    }
+
     public void addToCart(int productID) {
         this.cart.addProduct(productID);
     }

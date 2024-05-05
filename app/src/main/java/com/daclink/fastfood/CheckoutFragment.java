@@ -31,11 +31,6 @@ public class CheckoutFragment extends Fragment {
     private SharedPreferencesHelper helper;
     private User user;
 
-    public CheckoutFragment() {
-        // Required empty public constructor
-    }
-
-
     public static CheckoutFragment newInstance(String param1, String param2) {
         CheckoutFragment fragment = new CheckoutFragment();
         return fragment;
@@ -74,9 +69,12 @@ public class CheckoutFragment extends Fragment {
 
         Button checkoutButton = view.findViewById(R.id.button_checkout);
         checkoutButton.setOnClickListener(v -> {
-            // Handle button1 click
+            Bundle bundle = new Bundle();
+            bundle.putInt("KEY_QUANTITY", totalQuantity);
+            bundle.putDouble("KEY_TOTAL", total * 1.1);
             AppCompatActivity activity = (AppCompatActivity) unwrap(v.getContext());
             ConfirmationFragment confirmationFragment = new ConfirmationFragment();
+            confirmationFragment.setArguments(bundle);
             activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, confirmationFragment).addToBackStack(null).commit();
         });
 

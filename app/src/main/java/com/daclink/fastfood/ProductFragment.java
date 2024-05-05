@@ -20,16 +20,11 @@ import com.google.gson.Gson;
 public class ProductFragment extends Fragment {
 
     private SharedViewModel sharedViewModel;
-    private ProductViewModel mViewModel;
     private TextView nameTextView;
     private TextView descriptionTextView;
     private TextView priceTextView;
     private TextView quantityTextView;
     private TextView weightTextView;
-
-    public static ProductFragment newInstance() {
-        return new ProductFragment();
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,

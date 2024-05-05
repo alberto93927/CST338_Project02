@@ -48,10 +48,6 @@ public class Cart {
         return 0;
     }
 
-    public boolean hasProduct(int productID) {
-        return productIDs.containsKey(productID);
-    }
-
     public HashMap<Integer, Integer> getProductIDs() {
         return productIDs;
     }

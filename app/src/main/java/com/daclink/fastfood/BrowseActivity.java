@@ -27,8 +27,6 @@ public class BrowseActivity extends AppCompatActivity {
             fragmentTransaction.add(R.id.fragment_container, productListFragment, "RECYCLER_VIEW_FRAGMENT");
             fragmentTransaction.add(R.id.button_container, buttonFragment, "BUTTON_FRAGMENT");
             fragmentTransaction.commit();
-
-
         }
     }
 }

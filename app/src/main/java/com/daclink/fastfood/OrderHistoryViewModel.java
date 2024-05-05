@@ -17,13 +17,10 @@ public class OrderHistoryViewModel extends ViewModel {
         orderRepository = repository;
         orderRepository.getOrderByUserID(userID).observeForever(orders -> itemsLiveData.postValue(orders));;
     }
-
-    // Expose the LiveData to observe changes
     public LiveData<List<Order>> getItemsLiveData() {
         return itemsLiveData;
     }
 
-    // You can update the data as needed (e.g., from a network request)
     public void updateItems(List<Order> updatedItems) {
         itemsLiveData.setValue(updatedItems);
     }

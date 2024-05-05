@@ -59,7 +59,7 @@ public class CheckoutAdapter extends RecyclerView.Adapter<CheckoutAdapter.ViewHo
         }
 
         public void bindData(Product product) {
-            textView.setText(product.getName()); // Assuming your CustomClass has a getName() method
+            textView.setText(product.getName());
         }
     }
 }

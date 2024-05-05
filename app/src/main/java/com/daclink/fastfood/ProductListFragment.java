@@ -18,7 +18,6 @@ public class ProductListFragment extends Fragment {
     private SharedViewModel sharedViewModel;
     private RecyclerView recyclerView;
     private ProductListAdapter productListAdapter;
-    private ProductListViewModel productListViewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

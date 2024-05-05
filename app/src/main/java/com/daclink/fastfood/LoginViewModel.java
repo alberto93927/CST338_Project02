@@ -43,22 +43,6 @@ public class LoginViewModel extends ViewModel {
         userByNameLiveData = userRepository.findUserByName(name);
     }
 
-    public LiveData<List<User>> getUserByIDLiveData() {
-        return userByIDLiveData;
-    }
-
-    public LiveData<List<User>> getUserByNameLiveData() {
-        return userByNameLiveData;
-    }
-
-    public void setUserId(String userId) {
-        userIDLiveData.setValue(userId);
-    }
-
-    public void setUserName(String userId) {
-        userNameLiveData.setValue(userId);
-    }
-
     public void setUserCredentialsLiveData(String name, String pass) {
         userCredentialsLiveData.setValue(new Pair<>(name, pass));
     }

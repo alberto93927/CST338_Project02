@@ -26,4 +26,8 @@ public class OrderRepository {
     public LiveData<List<Order>> getOrderByUserID(int userID) {
         return orderDAO.searchOrderByUserID(userID);
     }
+
+    public void addOrder(Order order) {
+        orderDAO.insertOrder(order);
+    }
 }

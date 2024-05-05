@@ -26,12 +26,4 @@ public class ProductListViewModel extends ViewModel {
         }
         return productList;
     }
-
-    public void addToCart(Product product) {
-        userRepository.addToCart(product);
-    }
-
-    public void addToCart(Product product, int quantity) {
-        userRepository.addToCart(product, quantity);
-    }
 }

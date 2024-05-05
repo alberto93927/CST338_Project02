@@ -78,12 +78,9 @@ public class ProductAdapter extends ListAdapter<Product, ProductAdapter.ProductV
                 if (position != RecyclerView.NO_POSITION) {
                     Product productToUpdate = adapter.getItem(position);
                     ((AdminActivity) itemView.getContext()).openUpdateProductDialog(productToUpdate);
-
                 }
             });
-
         }
-
     }
 
     static class ProductDiff extends DiffUtil.ItemCallback<Product> {

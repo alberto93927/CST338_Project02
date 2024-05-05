@@ -30,13 +30,11 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
 
     @Override
     public void onBindViewHolder(@NonNull OrderHistoryViewHolder holder, int position) {
-        // Bind data to views (e.g., TextViews, ImageViews) in your ViewHolder
         Order currentItem = items.get(position);
         holder.orderNumberView.setText("Order #: " + currentItem.getId());
         holder.dateView.setText("Date: "  + currentItem.getDate().toLocalDate());
-        holder.itemCountView.setText("Items: " + currentItem.getTotalItems());
-        holder.totalView.setText("Total: $" + currentItem.getTotal());
-        // Set data to views here...
+        holder.itemCountView.setText("Items: " + String.format("%.0f", currentItem.getTotalItems()));
+        holder.totalView.setText("Total: $" + String.format("%.2f", currentItem.getTotal()));
     }
 
     @Override
@@ -61,7 +59,6 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
             dateView = itemView.findViewById(R.id.text_view_date);
             itemCountView = itemView.findViewById(R.id.text_view_item_count);
             totalView = itemView.findViewById(R.id.text_view_total);
-
         }
     }
 }
