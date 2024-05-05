@@ -1,11 +1,9 @@
 package com.daclink.fastfood;
 
-import static androidx.core.content.res.TypedArrayUtils.getString;
-
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +12,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.daclink.fastfood.Database.entities.Cart;
 import com.daclink.fastfood.Database.entities.Product;
 import com.daclink.fastfood.Database.entities.User;
 
@@ -80,8 +77,9 @@ public class CartViewAdapter extends RecyclerView.Adapter<CartViewAdapter.ViewHo
             }
         });
     }
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull  ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         return new ViewHolder(inflater.inflate(R.layout.cart_list_product, parent, false));
     }

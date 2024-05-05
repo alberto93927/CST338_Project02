@@ -1,8 +1,6 @@
 package com.daclink.fastfood;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
@@ -10,8 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.daclink.fastfood.Database.entities.User;
 import com.daclink.fastfood.databinding.ActivityMainBinding;
-
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 

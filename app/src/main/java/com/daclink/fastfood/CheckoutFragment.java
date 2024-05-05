@@ -20,7 +20,6 @@ import android.widget.TextView;
 
 import com.daclink.fastfood.Database.entities.Product;
 import com.daclink.fastfood.Database.entities.User;
-import com.google.android.material.resources.TextAppearanceConfig;
 
 import java.util.HashMap;
 import java.util.List;
@@ -31,11 +30,6 @@ public class CheckoutFragment extends Fragment {
     private SharedPreferencesHelper helper;
     private User user;
 
-    public static CheckoutFragment newInstance(String param1, String param2) {
-        CheckoutFragment fragment = new CheckoutFragment();
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +37,6 @@ public class CheckoutFragment extends Fragment {
         user = helper.getUser();
         sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
         sharedViewModel.setCurrentFragmentTag("Checkout");
-
     }
 
     @Override
@@ -78,7 +71,6 @@ public class CheckoutFragment extends Fragment {
             activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, confirmationFragment).addToBackStack(null).commit();
         });
 
-
         CheckoutAdapter adapter = new CheckoutAdapter(productList, user.getCart().getProductIDs());
         recyclerView.setAdapter(adapter);
 
@@ -89,9 +81,7 @@ public class CheckoutFragment extends Fragment {
         double total = 0;
         HashMap<Integer,Integer> cartItems = new HashMap<>();
         cartItems.putAll(user.getCart().getProductIDs());
-        if(cartItems == null) {
-            return 0.0;
-        }
+        //known bug - under certain conditions this will crash checkout
         for(Product product : productList) {
             Log.d("product", product.getName());
             if(cartItems.containsKey(product.getId())) {
