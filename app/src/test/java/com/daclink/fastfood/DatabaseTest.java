@@ -22,8 +22,6 @@ import org.junit.runners.JUnit4;
 import java.io.IOException;
 import java.util.List;
 
-//Have issues with gradle, these tests are currently failing due to those issues.
-
 @RunWith(JUnit4.class)
 public class DatabaseTest {
     private userDAO userDao;
